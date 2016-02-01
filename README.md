@@ -4,7 +4,7 @@ Slides for Uncharted Aurelia lunch and learn presentation.
 
 ## Develop
 
-Make sure [Node.js](https://nodejs.org/en/) is installed and global grunt `npm install -g grunt`.
+Make sure [Node.js](https://nodejs.org/en/) is installed and global grunt `npm install -g grunt-cli`.
 
 ```shell
 git clone git@github.com:danielabar/aurelia-presentation.git
@@ -18,6 +18,8 @@ grunt serve
 This will open a browser window at [http://localhost:8000/#/](http://localhost:8000/#/).
 
 Edit slides in [index.html](http://localhost:8000/#/). The `grunt serve` task watches for changes and livereloads in the browser.
+
+Alternatively, if you don't want to use grunt, any other static server can be used such as `python -m SimpleHTTPServer` or `npm install -g http-server` and then run `http-server` from project root.
 
 ## Publish
 
