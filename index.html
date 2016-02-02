@@ -117,19 +117,10 @@
 						TODO: Insert image
 					</p>
 					</section>
+
 					<section>
-						<h2>The Angular Way</h2>
-						<!-- <table>
-							<tr>
-								<td>
-
-								</td>
-								<td>
-
-								</td>
-							</tr>
-						</table> -->
-						<pre style="box-shadow: none;"><code class="hljs" data-trim>
+						<h2>&ldquo;Angular Script&rdquo; vs JavaScript</h2>
+						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
     $routeProvider
@@ -139,11 +130,11 @@ angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
   });
 						</code></pre>
 
-						<pre style="box-shadow: none;"><code class="hljs" data-trim>
+						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
 export class App {
   configureRouter(config, router) {
     config.map([
-      { route: ['', 'users'], moduleId: 'users/userlist' },
+      { route: ['', 'users'], moduleId: 'views/users' },
     ]);
     this.router = router;
   }
@@ -152,15 +143,35 @@ export class App {
 					</section>
 
 					<section>
-						<h2>It's just ES6</h2>
-						<p>
-							TODO: Code snippet view model and view with data binding
-						</p>
+						<h2>Dependency Injection</h2>
+						<h3>Less Magic</h3>
+						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+angular.module('myApp')
+  .controller('UsersController', function ($scope, UserService) {
+    $scope.users = UserService.getAll();
+  });
+						</code></pre>
+
+						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+import {inject} from 'aurelia-framework';
+import {UserService} from 'users/user-service';
+
+@inject(UserService)
+export class Users {
+	constructor(userService) {
+		this.userService = userService;
+	}
+	activate() {
+		this.users = this.userService.getAll();
+	}
+}
+							</code></pre>
 					</section>
+
 					<section>
-						<h2>Less Magic</h2>
+						<h2>Data Binding</h2>
 						<p>
-							TODO: Code snippet Angular DI vs Aurela import and @inject
+							TODO: template comparing input ng-model vs value.bind
 						</p>
 					</section>
 					<section>
