@@ -119,32 +119,35 @@
 					</section>
 					<section>
 						<h2>The Angular Way</h2>
-						<pre class="fragment" style="box-shadow: none;"><code class="hljs" data-trim>
+						<!-- <table>
+							<tr>
+								<td>
+
+								</td>
+								<td>
+
+								</td>
+							</tr>
+						</table> -->
+						<pre style="box-shadow: none;"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
     $routeProvider
       .when('/', { ... config for Home route })
-      .when('/userlist', {
-        templateUrl: 'views/userlist.html',
-        controller: 'UserListController',
-        controllerAs: 'userlist',
-        resolve: {
-          users: function(userservice) {
-            return userservice.fetchUsers();
-          }
-        }
-      })
+      .when('/users', { ... config for Users route })
+			.otherwise({ redirectTo: '/' });
   });
 						</code></pre>
 
-						<p class="fragment" style="color: red; position: absolute; top: 90px; right: 20px">Create module</p>
-						<p class="fragment" style="color: red; position: absolute; top: 170px; right: 20px">Configure route</p>
-
-						<pre class="fragment" style="box-shadow: none;"><code class="hljs" data-trim>
-angular.module('myApp')
-	.controller('UserListController', function (users) {
-  		this.users = users.data;
-	});
+						<pre style="box-shadow: none;"><code class="hljs" data-trim>
+export class App {
+  configureRouter(config, router) {
+    config.map([
+      { route: ['', 'users'], moduleId: 'users/userlist' },
+    ]);
+    this.router = router;
+  }
+}
 							</code></pre>
 					</section>
 
