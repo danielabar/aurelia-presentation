@@ -117,13 +117,37 @@
 						TODO: Insert image
 					</p>
 					</section>
-					<!-- TODO: Can these two slides fit in side by side on one? -->
 					<section>
 						<h2>The Angular Way</h2>
-						<p>
-							TODO: Code snippet .module, .config, .controller with $scope and data binding in template
-						</p>
+						<pre class="fragment" style="box-shadow: none;"><code class="hljs" data-trim>
+angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
+	.config(function ($routeProvider) {
+    $routeProvider
+      .when('/', { ... config for Home route })
+      .when('/userlist', {
+        templateUrl: 'views/userlist.html',
+        controller: 'UserListController',
+        controllerAs: 'userlist',
+        resolve: {
+          users: function(userservice) {
+            return userservice.fetchUsers();
+          }
+        }
+      })
+  });
+						</code></pre>
+
+						<p class="fragment" style="color: red; position: absolute; top: 90px; right: 20px">Create module</p>
+						<p class="fragment" style="color: red; position: absolute; top: 170px; right: 20px">Configure route</p>
+
+						<pre class="fragment" style="box-shadow: none;"><code class="hljs" data-trim>
+angular.module('myApp')
+	.controller('UserListController', function (users) {
+  		this.users = users.data;
+	});
+							</code></pre>
 					</section>
+
 					<section>
 						<h2>It's just ES6</h2>
 						<p>
