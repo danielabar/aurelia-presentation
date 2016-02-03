@@ -1,9 +1,11 @@
 .block {
-  width: 300px;
+  display: inline-block;
+  width: 410px;
   height: 1.5em;
   margin: 5px !important;
-  padding: 5px;
+  padding: 5px !important;
   border: 2px solid red !important;
   border-radius: 3px !important;
-  background: #7c7f82 !important;
+  background: #5A5859 !important;
+  font-family: monospace !important;
 }
