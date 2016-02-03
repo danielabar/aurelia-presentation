@@ -9,3 +9,8 @@
   background: #5A5859 !important;
   font-family: monospace !important;
 }
+
+.presentation-code {
+  box-shadow: none !important;
+  tab-size: 2 !important;
+}

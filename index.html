@@ -136,7 +136,7 @@
 
 					<section>
 						<h2>&ldquo;Angular Script&rdquo; vs JavaScript</h2>
-						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+						<pre style="position: absolute; left: -20%; width: 700px" class="presentation-code"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
     $routeProvider
@@ -144,13 +144,14 @@ angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
       .when('/users', { ... config for Users route })
 			.otherwise({ redirectTo: '/' });
   });
-						</code></pre>
+&nbsp;
 
-						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+						</code></pre>
+						<pre style="position: absolute; left: 55%; width: 630px;" class="presentation-code"><code class="hljs" data-trim>
 export class App {
   configureRouter(config, router) {
     config.map([
-      { route: ['', 'users'], moduleId: 'views/users' },
+      { route: ['', 'users'], moduleId: 'users' }
     ]);
     this.router = router;
   }
