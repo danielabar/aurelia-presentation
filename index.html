@@ -112,7 +112,7 @@
 				<!-- BEGIN Daniela: Aurelia vs Angular -->
 				<section>
 					<section>
-					<h2>Aurelia vs Angular</h2>
+					<h2>Aurelia vs Angular 1.x</h2>
 					<p>
 						TODO: Insert image
 					</p>
@@ -170,11 +170,19 @@ export class Users {
 
 					<section>
 						<h2>Data Binding</h2>
-						<p>
-							TODO: template comparing input ng-model vs value.bind
-						</p>
+						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+<input type="text" ng-model="user.name">
+<div ng-show="hasError" class="error">{{ err.message }}</div>
+						</code></pre>
+						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+<template>
+	<input type="text" value.bind="user.name">
+	<div show.bind="hasError" class="error">${err.message}</div>
+</template>
+						</code></pre>
 					</section>
 					<section>
+
 						<h2>Directive</h2>
 						<p>
 							TODO: Example jQuery plugin with data binding
