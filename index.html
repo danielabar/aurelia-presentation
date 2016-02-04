@@ -135,8 +135,8 @@
 					</section>
 
 					<section>
-						<h2>&ldquo;Angular Script&rdquo; vs JavaScript</h2>
-						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
+						<h2>App Config</h2>
+						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
     $routeProvider
@@ -146,7 +146,7 @@ angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
   });
 &nbsp;
 						</code></pre>
-						<pre class="presentation-code hack-col-right"><code class="hljs" data-trim>
+						<pre class="fragment presentation-code hack-col-right"><code class="hljs" data-trim>
 export class App {
   configureRouter(config, router) {
     config.map([
@@ -160,15 +160,22 @@ export class App {
 
 					<section>
 						<h2>Dependency Injection</h2>
-						<h3>Less Magic</h3>
-						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp')
-  .controller('UsersController', function ($scope, UserService) {
-    $scope.users = UserService.getAll();
+  .controller('UsersController',
+		function ($scope, UserService) {
+    	UserService.getAll().then(
+				function(users) {
+					$scope.users = users;
+				}
+			);
   });
+	&nbsp;
+	&nbsp;
+	&nbsp;
 						</code></pre>
 
-						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+						<pre class="fragment presentation-code hack-col-right"><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 
