@@ -14,3 +14,15 @@
   box-shadow: none !important;
   tab-size: 2 !important;
 }
+
+.hack-col-left {
+  position: absolute !important;
+  left: -20% !important;
+  width: 700px !important;
+}
+
+.hack-col-right {
+  position: absolute !important;
+  left: 55% !important;
+  width: 630px !important;
+}
