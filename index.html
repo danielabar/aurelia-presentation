@@ -122,20 +122,20 @@
 						<h2>&ldquo;Angular Script&rdquo; vs JavaScript</h2>
 							<p>
 								<span class="fragment block">angular.module</span>
-								<span class="fragment block">angular.controller</span>
+								<span class="fragment block">...controller</span>
 							</p>
 							<p>
-								<span class="fragment block">angular.factory</span>
-								<span class="fragment block">angular.service</span>
+								<span class="fragment block">...factory</span>
+								<span class="fragment block">...service</span>
 							</p>
 							<p>
-								<span class="fragment block">angular.provider</span>
-								<span class="fragment block">angular.filter</span>
+								<span class="fragment block">...provider</span>
+								<span class="fragment block">...filter</span>
 							</p>
 					</section>
 
 					<section>
-						<h2>App Config</h2>
+						<h3>With Aurelia, it's just ES6/7</h3>
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
@@ -170,13 +170,7 @@ angular.module('myApp')
 				}
 			);
   });
-	&nbsp;
-	&nbsp;
-	&nbsp;
 						</code></pre>
-
-						<img class="fragment" width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
-							style="border: none; background: none; position: absolute; top: 140%; left: 1%;">
 
 						<pre class="fragment presentation-code hack-col-right"><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
@@ -188,10 +182,15 @@ export class Users {
 		this.userService = userService;
 	}
 	activate() {
-		this.users = this.userService.getAll();
+		return this.userService.getAll()
+			.then( users => this.users = users );
 	}
 }
 							</code></pre>
+							<img class="fragment" width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
+								style="border: none; background: none; position: absolute; top: 140%; left: -2%;">
+							<img class="fragment" width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
+								style="border: none; background: none; position: absolute; top: 140%; left: 10%;">
 					</section>
 
 					<section>
