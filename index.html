@@ -45,7 +45,8 @@
 			<div class="slides">
 				<section>
 					<a href="#" class="navigate-down">
-						<img width="573" height="170" data-src="images/aurelia-logo.png" alt="Aurelia Logo" style="border: none; background: none;">
+						<img width="573" height="170" data-src="images/aurelia-logo.png" alt="Aurelia Logo"
+							style="border: none; background: none; box-shadow: none;">
 					</a>
 					<h3>A JavaScript Client Framework</h3>
 					<p>
@@ -188,24 +189,44 @@ export class Users {
 }
 							</code></pre>
 							<img class="fragment" width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
-								style="border: none; background: none; position: absolute; top: 140%; left: -2%;">
-							<img class="fragment" width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
-								style="border: none; background: none; position: absolute; top: 140%; left: 10%;">
+								style="border: none; background: none; box-shadow: none; position: absolute; top: 140%; left: -2%;">
+							<div class="fragment">
+							<img width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
+								style="border: none; background: none; box-shadow: none; position: absolute; top: 140%; left: 10%;">
+							<img width="70" height="150" data-src="images/ping-question-mark.png" alt="Question mark"
+								style="border: none; background: none; box-shadow: none; position: absolute; top: 140%; left: 35%;">
+							</div>
 					</section>
 
 					<section>
-						<h2>Data Binding</h2>
-						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+						<h2>Data Binding: The Angular Way</h2>
+						<ul>
+							<li>Memorize Angular-specific custom attributes</li>
+							<li>Two-way, all the time</li>
+						</ul>
+						<pre class="presentation-code"><code class="hljs" data-trim>
 <input type="text" ng-model="user.name">
+						</code></pre>
+						<pre class="presentation-code"><code class="hljs" data-trim>
 <div ng-show="hasError" class="error">{{ err.message }}</div>
 						</code></pre>
-						<pre style="box-shadow: none; tab-size: 2;"><code class="hljs" data-trim>
+					</section>
+
+					<section>
+						<h2>Data Binding: The Aurelia Way</h2>
+						<ul>
+							<li>Append ".bind" to any html attribute</li>
+							<li>Defaults to two-way for input, one-way for everthing else</li>
+							<li>Want more control? ".one-way", ".two-way", ".one-time"</li>
+						</ul>
+						<pre class="presentation-code"><code class="hljs" data-trim>
 <template>
 	<input type="text" value.bind="user.name">
 	<div show.bind="hasError" class="error">${err.message}</div>
 </template>
 						</code></pre>
 					</section>
+
 					<section>
 
 						<h2>Directive</h2>
