@@ -30,3 +30,25 @@
   left: 55% !important;
   width: 630px !important;
 }
+
+/* ---------------------------------- */
+/* The right way to customize         */
+/* ---------------------------------- */
+.dependency-injection p {
+  text-align: left;
+}
+.dependency-injection table {
+  margin: none; /* override reveal's margin: auto */
+  margin-left: 3%;
+}
+.dependency-injection table td {
+  border-bottom: none;
+}
+.dependency-injection table td code {
+  color: #e41137;
+}
+
+.just-es .fragment p {
+  margin-left: 5%;
+  text-align: left;
+}

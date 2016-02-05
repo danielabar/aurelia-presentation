@@ -170,8 +170,8 @@
 							</p>
 					</section>
 
-					<section data-transition="fade">
-						<h3>With Aurelia, it's just ES6/7</h3>
+					<section data-transition="fade" data-state="just-es">
+						<h3>With Aurelia, it's just ES6</h3>
 						<div class="fragment example1">
 							<p>View model (Angular controller)</p>
 							<pre class="fragment presentation-code"><code class="hljs" data-trim>
@@ -227,21 +227,42 @@ export class App {
 							</code></pre>
 					</section>
 
-					<section data-transition="fade">
+					<section data-transition="fade" data-state="dependency-injection">
 						<h2>Dependency Injection</h2>
-						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
-angular.module('myApp')
-  .controller('UsersController',
-		function ($scope, UserService) {
-    	UserService.getAll().then(
-				function(users) {
-					$scope.users = users;
-				}
-			);
-  });
+						<h3>With Angular, it's &ldquo;magic&rdquo;</h3>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+angular.module('myappApp').controller('UserlistCtrl',
+	function (users, UserService, $rootScope, toaster, $state) {
+		// ...
+});
 						</code></pre>
+						<table>
+							<tr class="fragment">
+								<td><code>users</code></td>
+								<td>Router resolve</td>
+							</tr>
+							<tr class="fragment">
+								<td><code>UserService</code></td>
+								<td>Application factory</td>
+							</tr>
+							<tr class="fragment">
+								<td><code>$rootScope</code></td>
+								<td>Angular core</td>
+							</tr>
+							<tr class="fragment">
+								<td><code>toaster</code></td>
+								<td>Notification library</td>
+							</tr>
+							<tr class="fragment">
+								<td><code>$state</code></td>
+								<td>UI Router (not Angular)</td>
+							</tr>
+						</table>
+					</section>
 
-						<pre class="fragment presentation-code hack-col-right"><code class="hljs" data-trim>
+					<section data-transition="fade">
+						<h2>Dependency Injection: Aurelia</h2>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 
@@ -256,14 +277,28 @@ export class Users {
 	}
 }
 							</code></pre>
-							<img class="fragment" width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
-								style="border: none; background: none; box-shadow: none; position: absolute; top: 140%; left: -2%;">
-							<div class="fragment">
-							<img width="70" height="150" data-src="images/green-up-arrow.png" alt="Up arrow"
-								style="border: none; background: none; box-shadow: none; position: absolute; top: 140%; left: 10%;">
-							<img width="70" height="150" data-src="images/ping-question-mark.png" alt="Question mark"
-								style="border: none; background: none; box-shadow: none; position: absolute; top: 140%; left: 35%;">
-							</div>
+					</section>
+
+					<section data-transition="fade">
+						<h2>View Lifecycle: Angular</h2>
+						<p><code>resolve</code> property of router configuration</p>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+.when('/userlist', {
+	templateUrl: 'views/userlist.html',
+	controller: 'UserlistCtrl',
+	resolve: {
+		users: function(userservice) {
+			return userservice.fetchUsers();
+		}
+	}
+})
+						</code></pre>
+					</section>
+
+					<section data-transition="fade">
+						<h2>View Lifecycle: Aurelia</h2>
+						<h3>More control over complete lifecycle</h3>
+						<p>TODO list activate, deactivate (cleanup), etc.</p>
 					</section>
 
 					<section data-transition="fade">
@@ -271,6 +306,7 @@ export class Users {
 						<ul>
 							<li class="fragment">Memorize Angular-specific custom attributes</li>
 							<li class="fragment">Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></li>
+							<li class="fragment">Each one added to watch list and dirty checked via digest cycle</li>
 						</ul>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 <input type="text" ng-model="user.name">
@@ -284,8 +320,8 @@ export class Users {
 					</section>
 
 					<section data-transition="fade">
-						<!-- class.bind="row.isActive ? 'active' : ''"> -->
 						<h2>Data Binding: The Aurelia Way</h2>
+						<!-- TODO: Remove ul and alternte text sentence with example code -->
 						<ul>
 							<li class="fragment">Append <span style="font-family: monospace;">.bind</span> to any html attribute</li>
 							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
@@ -306,15 +342,20 @@ export class Users {
 					</section>
 
 					<section data-transition="fade">
+						<h2>Dirty Checking vs Adaptive Binding</h2>
+						<!-- TODO: BRIEF explanation??? -->
+					</section>
 
-						<h2>Directive</h2>
+					<section data-transition="fade">
+
+						<h2>Angular Directive</h2>
 						<p>
 							TODO: Example jQuery plugin with data binding
 						</p>
 					</section>
 
 					<section data-transition="fade">
-						<h2>Custom Element</h2>
+						<h2>Aurelia Custom Element</h2>
 						<p>
 							TODO: Example jQuery plugin with data binding
 						</p>
