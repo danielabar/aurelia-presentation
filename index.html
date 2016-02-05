@@ -172,6 +172,39 @@
 
 					<section data-transition="fade">
 						<h3>With Aurelia, it's just ES6/7</h3>
+						<div class="fragment example1">
+							<p>View model (Angular controller)</p>
+							<pre class="fragment presentation-code"><code class="hljs" data-trim>
+export class Users {
+	constructor() { ... }
+	activate() { ... }
+}
+							</code></pre>
+						</div>
+						<div class="fragment example2">
+							<p>Service</p>
+							<pre class="fragment presentation-code"><code class="hljs" data-trim>
+export class MyService {
+	constructor() { ... }
+	doSomething() { ... }
+}
+							</code></pre>
+						</div>
+						<div class="fragment example3">
+							<p>Value Converter (Angular filter)</p>
+							<pre class="fragment presentation-code"><code class="hljs" data-trim>
+import numeral from 'numeral';
+export class CurrencyFormaValueConverter {
+	toView(value) {
+		return numeral(value).format('($0,0.00)');
+	}
+}
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Example &ldquo;Angular Script&rdquo; vs ES6</h2>
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
