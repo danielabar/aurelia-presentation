@@ -43,7 +43,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
+				<section data-transition="convex">
 					<a href="#" class="navigate-down">
 						<img width="573" height="170" data-src="images/aurelia-logo.png" alt="Aurelia Logo"
 							style="border: none; background: none; box-shadow: none;">
@@ -115,11 +115,11 @@
 
 				<!-- BEGIN Daniela: Aurelia vs Angular -->
 				<section>
-					<section>
+					<section data-transition="fade">
 					<h2>Aurelia vs Angular 1.x</h2>
 					</section>
 
-					<section>
+					<section data-transition="fade">
 						<h2>&ldquo;Angular Script&rdquo;</h2>
 							<p>
 								<span class="fragment block">angular.module</span>
@@ -135,7 +135,7 @@
 							</p>
 					</section>
 
-					<section>
+					<section data-transition="fade">
 						<h3>With Aurelia, it's just ES6/7</h3>
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
@@ -159,7 +159,7 @@ export class App {
 							</code></pre>
 					</section>
 
-					<section>
+					<section data-transition="fade">
 						<h2>Dependency Injection</h2>
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp')
@@ -198,43 +198,54 @@ export class Users {
 							</div>
 					</section>
 
-					<section>
+					<section data-transition="fade">
 						<h2>Data Binding: The Angular Way</h2>
 						<ul>
-							<li>Memorize Angular-specific custom attributes</li>
-							<li>Two-way, all the time</li>
+							<li class="fragment">Memorize Angular-specific custom attributes</li>
+							<li class="fragment">Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></li>
 						</ul>
-						<pre class="presentation-code"><code class="hljs" data-trim>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 <input type="text" ng-model="user.name">
 						</code></pre>
-						<pre class="presentation-code"><code class="hljs" data-trim>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 <div ng-show="hasError" class="error">{{ err.message }}</div>
 						</code></pre>
-					</section>
-
-					<section>
-						<h2>Data Binding: The Aurelia Way</h2>
-						<ul>
-							<li>Append ".bind" to any html attribute</li>
-							<li>Defaults to two-way for input, one-way for everthing else</li>
-							<li>Want more control? ".one-way", ".two-way", ".one-time"</li>
-						</ul>
-						<pre class="presentation-code"><code class="hljs" data-trim>
-<template>
-	<input type="text" value.bind="user.name">
-	<div show.bind="hasError" class="error">${err.message}</div>
-</template>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+<div ng-class="$even ? 'even-row' : 'odd-row'">some content</div>
 						</code></pre>
 					</section>
 
-					<section>
+					<section data-transition="fade">
+						<!-- class.bind="row.isActive ? 'active' : ''"> -->
+						<h2>Data Binding: The Aurelia Way</h2>
+						<ul>
+							<li class="fragment">Append <span style="font-family: monospace;">.bind</span> to any html attribute</li>
+							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
+							<li class="fragment">Want more control? ".one-way", ".two-way", ".one-time"</li>
+						</ul>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+<input type="text" value.bind="user.name">
+						</code></pre>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+<div show.bind="hasError" class="error">${err.message}</div>
+						</code></pre>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+<div class.bind="row.isActive ? 'active' : ''">some content</div>
+						</code></pre>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+<my-custom-el data.two-way="user.dob"></my-custom-el>
+						</code></pre>
+					</section>
+
+					<section data-transition="fade">
 
 						<h2>Directive</h2>
 						<p>
 							TODO: Example jQuery plugin with data binding
 						</p>
 					</section>
-					<section>
+
+					<section data-transition="fade">
 						<h2>Custom Element</h2>
 						<p>
 							TODO: Example jQuery plugin with data binding
