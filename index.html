@@ -346,8 +346,25 @@ export class Users {
 						<!-- TODO: BRIEF explanation??? -->
 					</section>
 
-					<section data-transition="fade">
+					<section data-state="dom-manipulation" data-transition="fade">
+						<h3>DOM Manipulation <span class="emphasis">outside</span> framework</h3>
+						<p>Example: Integrate custom datepicker with data binding</p>
+						<div class="fragment">
+							<p>Angular usage</p>
+							<pre class="presentation-code"><code class="hljs" data-trim>
+<my-datepicker data="user.dob"></my-datepicker>
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>Aurelia usage</p>
+							<pre class="presentation-code"><code class="hljs" data-trim>
+<my-datepicker data.two-way="movie.releaseYear"></my-datepicker>
+							</code></pre>
+						</div>
+						<p class="fragment">Usage looks similar, devil is in the implementation details...</p>
+					</section>
 
+					<section data-transition="fade">
 						<h2>Angular Directive</h2>
 						<p>
 							TODO: Example jQuery plugin with data binding

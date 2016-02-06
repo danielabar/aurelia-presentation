@@ -48,7 +48,13 @@
   color: #e41137;
 }
 
-.just-es .fragment p {
+.just-es .fragment p,
+.dom-manipulation p {
   margin-left: 5%;
   text-align: left;
+}
+
+.dom-manipulation .emphasis {
+  font-style: italic;
+  color: #cd230f;
 }
