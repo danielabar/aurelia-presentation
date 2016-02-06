@@ -150,11 +150,11 @@
 
 				<!-- BEGIN Daniela: Aurelia vs Angular -->
 				<section>
-					<section data-transition="fade">
+					<section>
 						<h2>Aurelia vs Angular 1.x</h2>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>&ldquo;Angular Script&rdquo;</h2>
 							<p>
 								<span class="fragment block">angular.module</span>
@@ -170,7 +170,7 @@
 							</p>
 					</section>
 
-					<section data-transition="fade" data-state="just-es">
+					<section data-state="just-es">
 						<h2>Aurelia is more consistent</h2>
 						<div class="fragment example1">
 							<p>View model (Angular controller)</p>
@@ -227,7 +227,7 @@ export class App {
 							</code></pre>
 					</section>
 
-					<section data-transition="fade" data-state="dependency-injection">
+					<section data-state="dependency-injection">
 						<h2>Dependency Injection</h2>
 						<h3>With Angular, it&rsquo;s &ldquo;magic&rdquo;</h3>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
@@ -260,7 +260,7 @@ angular.module('myappApp').controller('UserlistCtrl',
 						</table>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>Dependency Injection: Aurelia</h2>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
@@ -279,7 +279,7 @@ export class Users {
 							</code></pre>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>View Lifecycle: Angular</h2>
 						<p><code>resolve</code> property of router configuration</p>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
@@ -295,13 +295,13 @@ export class Users {
 						</code></pre>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>View Lifecycle: Aurelia</h2>
 						<h3>More control over complete lifecycle</h3>
 						<p>TODO list activate, deactivate (cleanup), etc.</p>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>Data Binding: The Angular Way</h2>
 						<ul>
 							<li class="fragment">Uses Angular-specific custom attributes</li>
@@ -320,7 +320,7 @@ export class Users {
 						</code></pre>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>Data Binding: The Aurelia Way</h2>
 						<!-- TODO: Remove ul and alternate text sentence with example code -->
 						<ul>
@@ -343,7 +343,7 @@ export class Users {
 						</code></pre>
 					</section>
 
-					<section data-state="dom-manipulation" data-transition="fade">
+					<section data-state="dom-manipulation">
 						<h3>DOM Manipulation <span class="emphasis">outside</span> framework</h3>
 						<p>Example: Integrate custom datepicker with data binding</p>
 							<table class="fragment">
@@ -433,7 +433,7 @@ link: function(scope, element) {
 						<p>Leaky abstraction, requires knowledge of framework's internals</p>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>Directive: Watch</h2>
 						<h3>Populate Datepicker from Model</h3>
 						<pre class="presentation-code"><code class="hljs" data-trim>
@@ -446,7 +446,7 @@ link: function(scope, element) {
 						<p>scope.$watch to add to list of watchers evaluated in digest cycle</p>
 					</section>
 
-					<section data-transition="fade">
+					<section>
 						<h2>Aurelia Custom Element</h2>
 						<ul>
 							<li>Works seamlessly with data binding</li>
@@ -506,12 +506,30 @@ dataChanged(newVal, oldVal) {
 					<p>See <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">full example</a></p>
 				</section>
 
-				<section>
+				<section data-state="angular-compare-summary">
 					<h2>Summary</h2>
-					<!-- TODO Figure out how to format this -->
-					<p>Aurelia: Conventions, Angular: Configuration</p>
-					<p>Aurelia: Web standards, Angular: DSL-like</p>
-					<p>Aurelia: DOM Manipulation + Data Binding: Easy, Angular: Difficult</p>
+					<table>
+						<tr>
+							<th>Aurelia</th>
+							<th>Angular</th>
+						</tr>
+						<tr class="fragment">
+							<td>Conventions</td>
+							<td>Configuration</td>
+						</tr>
+						<tr class="fragment">
+							<td>Web standards</td>
+							<td>Angular specific &ldquo;DSL&rdquo;</td>
+						</tr>
+						<tr class="fragment">
+							<td>Simple DOM maniuplation</td>
+							<td>Directives are difficult</td>
+						</tr>
+						<tr class="fragment">
+							<td>Data binding just works</td>
+							<td>Leaky abstractions</td>
+						</tr>
+					</table>
 				</section>
 			</section>
 

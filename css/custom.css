@@ -42,7 +42,8 @@
   margin-left: 3%;
 }
 .dependency-injection table td,
-.dom-manipulation table td {
+.dom-manipulation table td,
+.angular-compare-summary table td {
   border-bottom: none;
 }
 .dependency-injection table td code {
@@ -67,4 +68,10 @@
 .dom-manipulation p {
   margin-left: 2%;
   text-align: left;
+}
+
+.angular-compare-summary tr th {
+  text-transform: uppercase;
+  color: #cd230f;
+  font-style: italic;
 }
