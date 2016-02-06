@@ -171,10 +171,10 @@
 					</section>
 
 					<section data-transition="fade" data-state="just-es">
-						<h3>With Aurelia, it's just ES6</h3>
+						<h2>Aurelia is more consistent</h2>
 						<div class="fragment example1">
 							<p>View model (Angular controller)</p>
-							<pre class="fragment presentation-code"><code class="hljs" data-trim>
+							<pre class="presentation-code"><code class="hljs" data-trim>
 export class Users {
 	constructor() { ... }
 	activate() { ... }
@@ -183,7 +183,7 @@ export class Users {
 						</div>
 						<div class="fragment example2">
 							<p>Service</p>
-							<pre class="fragment presentation-code"><code class="hljs" data-trim>
+							<pre class="presentation-code"><code class="hljs" data-trim>
 export class MyService {
 	constructor() { ... }
 	doSomething() { ... }
@@ -192,7 +192,7 @@ export class MyService {
 						</div>
 						<div class="fragment example3">
 							<p>Value Converter (Angular filter)</p>
-							<pre class="fragment presentation-code"><code class="hljs" data-trim>
+							<pre class="presentation-code"><code class="hljs" data-trim>
 import numeral from 'numeral';
 export class CurrencyFormaValueConverter {
 	toView(value) {
@@ -229,7 +229,7 @@ export class App {
 
 					<section data-transition="fade" data-state="dependency-injection">
 						<h2>Dependency Injection</h2>
-						<h3>With Angular, it's &ldquo;magic&rdquo;</h3>
+						<h3>With Angular, it&rsquo;s &ldquo;magic&rdquo;</h3>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 angular.module('myappApp').controller('UserlistCtrl',
 	function (users, UserService, $rootScope, toaster, $state) {
@@ -304,9 +304,10 @@ export class Users {
 					<section data-transition="fade">
 						<h2>Data Binding: The Angular Way</h2>
 						<ul>
-							<li class="fragment">Memorize Angular-specific custom attributes</li>
+							<li class="fragment">Uses Angular-specific custom attributes</li>
 							<li class="fragment">Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></li>
-							<li class="fragment">Each one added to watch list and dirty checked via digest cycle</li>
+							<li class="fragment">Each binding adds $watch to $watch list</li>
+							<li class="fragment">Changes trigger $digest cycle (aka dirty checking)</li>
 						</ul>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 <input type="text" ng-model="user.name">
@@ -321,11 +322,12 @@ export class Users {
 
 					<section data-transition="fade">
 						<h2>Data Binding: The Aurelia Way</h2>
-						<!-- TODO: Remove ul and alternte text sentence with example code -->
+						<!-- TODO: Remove ul and alternate text sentence with example code -->
 						<ul>
 							<li class="fragment">Append <span style="font-family: monospace;">.bind</span> to any html attribute</li>
 							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
 							<li class="fragment">Want more control? ".one-way", ".two-way", ".one-time"</li>
+							<li class="fragment"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> used to pick optimal observation strategy and minimize dirty checking</li>
 						</ul>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 <input type="text" value.bind="user.name">
@@ -339,11 +341,6 @@ export class Users {
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 <my-custom-el data.two-way="user.dob"></my-custom-el>
 						</code></pre>
-					</section>
-
-					<section data-transition="fade">
-						<h2>Dirty Checking vs Adaptive Binding</h2>
-						<!-- TODO: BRIEF explanation??? -->
 					</section>
 
 					<section data-state="dom-manipulation" data-transition="fade">
@@ -364,6 +361,8 @@ export class Users {
 									</td>
 									<td>
 										<pre class="presentation-code"><code class="hljs" data-trim>
+<require from="../components/mydatepicker"></require>
+&nbsp;
 <my-datepicker
 	data.two-way="user.dob">
 </my-datepicker>
@@ -374,17 +373,69 @@ export class Users {
 						<p class="fragment">Usage looks similar, devil is in the implementation details...</p>
 					</section>
 
-					<section data-transition="fade">
+					<section data-transition="none">
 						<h2>Angular Directive</h2>
-						<p>
-							TODO: Example jQuery plugin with data binding
-						</p>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+angular.module('myApp').directive('myDatepicker', function () {
+    return {
+      templateUrl: 'views/mydatepicker.html',
+      restrict: 'E',
+      scope: { data: '=' }, // optional
+			controller: function($scope, $element) {
+				// Directive-specific logic
+			},
+      link: function postLink(scope, element) {
+        // DOM manipulation here
+      }
+    };
+  });
+						</code></pre>
+						<p>Configuration to specify where the view is located</p>
+						<p>Isolated scope, otherwise defaults to inheriting from parent (bad for re-usability)</p>
+						<p>Controller function runs first (no data binding yet)</p>
+						<p>Link function (aka postLink) runs last (template linked to scope)</p>
+						<p>More details on <a href="http://odetocode.com/blogs/scott/archive/2014/05/28/compile-pre-and-post-linking-in-angularjs.aspx">Directive Lifecycle</a></p>
+					</section>
+
+					<section data-transition="none">
+						<h2>Directive: Datepicker</h2>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+link: function(scope, element) {
+	// Initialize datepicker
+	$('input').datepicker();
+
+	// Try to update data binding?
+	$('input').datepicker().on('changeDate', function(e) {
+		scope.data = e.date;
+	});
+}
+						</code></pre>
+						<p>Data binding will NOT update because event happened outside of Angular context</p>
+					</section>
+
+					<section data-transition="none">
+						<h2>Directive: Datepicker</h2>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+link: function(scope, element) {
+	// Initialize datepicker
+	$('input').datepicker();
+
+	// Update data binding
+	$('input').datepicker().on('changeDate', function(e) {
+		scope.$apply(function () {
+			scope.data = e.date;
+		});
+	});
+}
+						</code></pre>
+						<p>Use scope.$apply to trigger a digest cycle</p>
+						<p>Leaky abstraction, requires knowledge of framework's internals</p>
 					</section>
 
 					<section data-transition="fade">
 						<h2>Aurelia Custom Element</h2>
 						<p>
-							TODO: Example jQuery plugin with data binding
+							Work seamlessly with data binding
 						</p>
 					</section>
 				</section>
