@@ -82,6 +82,11 @@
   text-align: left;
 }
 
+.ang-dir p {
+  text-align: left;
+  font-style: italic;
+}
+
 .angular-compare-summary tr th {
   text-transform: uppercase;
   color: #cd230f;

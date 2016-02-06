@@ -365,11 +365,11 @@ export class Users {
 						<p class="fragment">Usage looks similar, devil is in the implementation details...</p>
 					</section>
 
-					<!-- TODO side by side format, going off the bottom -->
-					<section data-transition="none">
+					<section data-state="ang-dir">
 						<h2>Angular Directive</h2>
-						<pre class="presentation-code"><code class="hljs" data-trim>
-angular.module('myApp').directive('myDatepicker', function () {
+						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
+angular.module('myApp').directive('myDatepicker',
+	function () {
     return {
       templateUrl: 'views/mydatepicker.html',
       restrict: 'E',
@@ -383,14 +383,16 @@ angular.module('myApp').directive('myDatepicker', function () {
     };
   });
 						</code></pre>
-						<p>Configuration to specify where the view is located</p>
-						<p>Isolated scope, otherwise defaults to inheriting from parent (bad for re-usability)</p>
-						<p>Controller function runs first (no data binding yet)</p>
-						<p>Link function (aka postLink) runs last (template linked to scope)</p>
-						<p>More details on <a href="http://odetocode.com/blogs/scott/archive/2014/05/28/compile-pre-and-post-linking-in-angularjs.aspx">Directive Lifecycle</a></p>
+						<div class="hack-col-right">
+							<p class="fragment">Configure template</p>
+							<p class="fragment">Isolated scope (ow can access parent!)</p>
+							<p class="fragment">Controller function runs first</p>
+							<p class="fragment">Link function runs last</p>
+							<p class="fragment"><a href="http://odetocode.com/blogs/scott/archive/2014/05/28/compile-pre-and-post-linking-in-angularjs.aspx">Directive Lifecycle</a></p>
+						</div>
 					</section>
 
-					<section data-transition="none">
+					<section>
 						<h2>Directive: Datepicker</h2>
 						<pre class="presentation-code"><code class="hljs" data-trim>
 link: function(scope, element) {
@@ -406,7 +408,7 @@ link: function(scope, element) {
 						<p>Data binding will NOT update because event happened outside of Angular context</p>
 					</section>
 
-					<section data-transition="none">
+					<section>
 						<h2>Directive: Datepicker</h2>
 						<pre class="presentation-code"><code class="hljs" data-trim>
 link: function(scope, element) {
@@ -497,6 +499,12 @@ dataChanged(newVal, oldVal) {
 					</code></pre>
 					<p>See <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">full example</a></p>
 				</section>
+
+				<!--
+				Sensible defaults:
+				View Model limited to its children, Angular $scope can always access parent
+
+				 -->
 
 				<section data-state="angular-compare-summary">
 					<h2>Summary</h2>
