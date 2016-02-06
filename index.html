@@ -171,7 +171,7 @@
 					</section>
 
 					<section data-state="just-es">
-						<h2>Aurelia is more consistent</h2>
+						<h2>Aurelia: ES6</h2>
 						<div class="fragment example1">
 							<p>View model (Angular controller)</p>
 							<pre class="presentation-code"><code class="hljs" data-trim>
@@ -204,7 +204,7 @@ export class CurrencyFormaValueConverter {
 					</section>
 
 					<section>
-						<h2>Example &ldquo;Angular Script&rdquo; vs ES6</h2>
+						<h2>&ldquo;Angular Script&rdquo; vs ES6</h2>
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
 	.config(function ($routeProvider) {
@@ -228,8 +228,7 @@ export class App {
 					</section>
 
 					<section data-state="dependency-injection">
-						<h2>Dependency Injection</h2>
-						<h3>With Angular, it&rsquo;s &ldquo;magic&rdquo;</h3>
+						<h2>Dependency Injection: Aurelia</h2>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 angular.module('myappApp').controller('UserlistCtrl',
 	function (users, UserService, $rootScope, toaster, $state) {
@@ -260,49 +259,43 @@ angular.module('myappApp').controller('UserlistCtrl',
 						</table>
 					</section>
 
-					<section>
+					<section data-state="di-aurelia">
 						<h2>Dependency Injection: Aurelia</h2>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+						<table>
+							<tr>
+								<td width="55%">
+									<pre class="presentation-code"><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
+import {EventAggregator} from
+	'aurelia-event-aggregator';
 
-@inject(UserService)
+@inject(UserService, EventAggregator)
 export class Users {
-	constructor(userService) {
+	constructor(userService, eventAggregator) {
 		this.userService = userService;
+		this.eventAggregator = eventAggregator;
 	}
-	activate() {
+	activate(params) {
 		return this.userService.getAll()
 			.then( users => this.users = users );
 	}
 }
-							</code></pre>
+										</code></pre>
+								</td>
+								<td width="45%">
+									<p class="fragment">Dependencies imported</p>
+									<p class="fragment">Injection via ES7 decorator</p>
+									<p class="fragment">Lifecycle activate</p>
+									<p class="fragment">Activate called with view state</p>
+									<p class="fragment"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#the-screen-activation-lifecycle">Screen Activation Lifecycle</a></p>
+								</td>
+							</tr>
+						</table>
 					</section>
 
 					<section>
-						<h2>View Lifecycle: Angular</h2>
-						<p><code>resolve</code> property of router configuration</p>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-.when('/userlist', {
-	templateUrl: 'views/userlist.html',
-	controller: 'UserlistCtrl',
-	resolve: {
-		users: function(userservice) {
-			return userservice.fetchUsers();
-		}
-	}
-})
-						</code></pre>
-					</section>
-
-					<section>
-						<h2>View Lifecycle: Aurelia</h2>
-						<h3>More control over complete lifecycle</h3>
-						<p>TODO list activate, deactivate (cleanup), etc.</p>
-					</section>
-
-					<section>
-						<h2>Data Binding: The Angular Way</h2>
+						<h2>Data Binding: Angular</h2>
 						<ul>
 							<li class="fragment">Uses Angular-specific custom attributes</li>
 							<li class="fragment">Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></li>
@@ -320,13 +313,12 @@ export class Users {
 						</code></pre>
 					</section>
 
-					<section>
+					<section data-state="db-aurelia">
 						<h2>Data Binding: The Aurelia Way</h2>
-						<!-- TODO: Remove ul and alternate text sentence with example code -->
 						<ul>
-							<li class="fragment">Append <span style="font-family: monospace;">.bind</span> to any html attribute</li>
+							<li class="fragment">Append <code>.bind</code> to any html attribute</li>
 							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
-							<li class="fragment">Want more control? ".one-way", ".two-way", ".one-time"</li>
+							<li class="fragment">Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code></li>
 							<li class="fragment"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> used to pick optimal observation strategy and minimize dirty checking</li>
 						</ul>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>

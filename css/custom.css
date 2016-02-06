@@ -50,6 +50,18 @@
   color: #e41137;
 }
 
+.di-aurelia table {
+  margin-left: -20%;
+}
+
+.di-aurelia pre {
+  width: 100%;
+}
+
+.di-aurelia p {
+  font-style: italic;
+}
+
 .just-es .fragment p {
   margin-left: 5%;
   text-align: left;
