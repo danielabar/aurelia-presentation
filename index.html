@@ -151,7 +151,7 @@
 				<!-- BEGIN Daniela: Aurelia vs Angular -->
 				<section>
 					<section data-transition="fade">
-					<h2>Aurelia vs Angular 1.x</h2>
+						<h2>Aurelia vs Angular 1.x</h2>
 					</section>
 
 					<section data-transition="fade">
@@ -465,39 +465,48 @@ import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
 @inject(Element)
 export class DatePicker {
   @bindable data;
-
   constructor(element) { this.element = element; }
-
-  dataChanged(newVal) { this.data = newVal; }
-
-  attached() {
-    // DOM manipulation here...
-	}
+	bind() { // DOM manipulation here... }
+  dataChanged(newVal) { // update datepicker here... }
 }
 					</code></pre>
 				</section>
 
 				<section data-transition="zoom">
-					<h2>Custom Element: Datepicker</h2>
+					<h2>Custom Element: Data Binding</h2>
 					<pre class="presentation-code"><code class="hljs" data-trim>
-attached() {
+bind() {
+	// Find input element
+	this.selector = $(this.element).find('.date');
+
 	// Initialize datepicker
-	selector.datepicker();
+	this.selector.datepicker();
 
 	// Update bound data on selection
-	selector.datepicker().on('changeDate', (e) => {
+	this.selector.datepicker().on('changeDate', (e) => {
 		this.data = e.date;
 	});
 
 	// Prepopulate with bound data
 	if (this.data) {
-		selector.datepicker('setDate', this.data);
+		this.selector.datepicker('setDate', this.data);
 	}
 }
 					</code></pre>
 				</section>
 
-				<section data-transition="fade">
+				<section>
+					<h2>Custom Element: Update</h2>
+					<pre class="presentation-code"><code class="hljs" data-trim>
+dataChanged(newVal, oldVal) {
+	// this.data is automatically bound to newVal
+	this.selector.datepicker('setDate', this.data);
+}
+					</code></pre>
+					<p>See <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">full example</a></p>
+				</section>
+
+				<section>
 					<h2>Summary</h2>
 					<!-- TODO Figure out how to format this -->
 					<p>Aurelia: Conventions, Angular: Configuration</p>
