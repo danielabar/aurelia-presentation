@@ -373,6 +373,7 @@ export class Users {
 						<p class="fragment">Usage looks similar, devil is in the implementation details...</p>
 					</section>
 
+					<!-- TODO side by side format, going off the bottom -->
 					<section data-transition="none">
 						<h2>Angular Directive</h2>
 						<pre class="presentation-code"><code class="hljs" data-trim>
@@ -380,7 +381,7 @@ angular.module('myApp').directive('myDatepicker', function () {
     return {
       templateUrl: 'views/mydatepicker.html',
       restrict: 'E',
-      scope: { data: '=' }, // optional
+      scope: { data: '=' },
 			controller: function($scope, $element) {
 				// Directive-specific logic
 			},
@@ -433,12 +434,57 @@ link: function(scope, element) {
 					</section>
 
 					<section data-transition="fade">
-						<h2>Aurelia Custom Element</h2>
-						<p>
-							Work seamlessly with data binding
-						</p>
+						<h2>Directive: Watch</h2>
+						<h3>Populate Datepicker from Model</h3>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+link: function(scope, element) {
+	scope.$watch('data', function(newVal) {
+    $('input').datepicker('setDate', scope.data);
+  });
+}
+						</code></pre>
+						<p>scope.$watch to add to list of watchers evaluated in digest cycle</p>
 					</section>
+
+					<section data-transition="fade">
+						<h2>Aurelia Custom Element</h2>
+						<ul>
+							<li>Works seamlessly with data binding</li>
+							<li>Finds view template by convention</li>
+							<li>Clearly named lifecycle methods</li>
+						</ul>
+					</section>
+
+				<section data-transition="fade">
+					<h2>Custom Element: Datepicker</h2>
+					<pre class="presentation-code"><code class="hljs" data-trim>
+import {inject, customElement, bindable} from 'aurelia-framework';
+import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
+
+@customElement('my-datepicker')
+@inject(Element)
+export class DatePicker {
+  @bindable data;
+
+  constructor(element) { this.element = element; }
+
+  dataChanged(newVal) { this.data = newVal; }
+
+  attached() {
+    // DOM manipulation here
+	}
+}
+					</code></pre>
 				</section>
+
+				<section data-transition="fade">
+					<h2>Summary</h2>
+					<!-- TODO Figure out how to format this -->
+					<p>Aurelia: Conventions, Angular: Configuration</p>
+					<p>Aurelia: Web standards, Angular: DSL-like</p>
+					<p>Aurelia: DOM Manipulation + Data Binding: Easy, Angular: Difficult</p>
+				</section>
+
 				<!-- END Daniela: Aurelia vs Angular -->
 
 				<!-- BEGIN Kent: Aurelia vs React -->
@@ -446,13 +492,13 @@ link: function(scope, element) {
 					<section>
 						<h2>Aurelia vs React</h2>
 						<p>
-							Not as weird???
+							Placeholder
 						</p>
 					</section>
 					<section>
 						<h2>JSX</h2>
 						<p>
-							Did I mention no weirdness???
+							Placeholder
 						</p>
 					</section>
 				</section>
