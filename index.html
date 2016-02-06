@@ -455,7 +455,7 @@ link: function(scope, element) {
 						</ul>
 					</section>
 
-				<section data-transition="fade">
+				<section data-transition="zoom">
 					<h2>Custom Element: Datepicker</h2>
 					<pre class="presentation-code"><code class="hljs" data-trim>
 import {inject, customElement, bindable} from 'aurelia-framework';
@@ -471,7 +471,27 @@ export class DatePicker {
   dataChanged(newVal) { this.data = newVal; }
 
   attached() {
-    // DOM manipulation here
+    // DOM manipulation here...
+	}
+}
+					</code></pre>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>Custom Element: Datepicker</h2>
+					<pre class="presentation-code"><code class="hljs" data-trim>
+attached() {
+	// Initialize datepicker
+	selector.datepicker();
+
+	// Update bound data on selection
+	selector.datepicker().on('changeDate', (e) => {
+		this.data = e.date;
+	});
+
+	// Prepopulate with bound data
+	if (this.data) {
+		selector.datepicker('setDate', this.data);
 	}
 }
 					</code></pre>
@@ -484,6 +504,7 @@ export class DatePicker {
 					<p>Aurelia: Web standards, Angular: DSL-like</p>
 					<p>Aurelia: DOM Manipulation + Data Binding: Easy, Angular: Difficult</p>
 				</section>
+			</section>
 
 				<!-- END Daniela: Aurelia vs Angular -->
 
