@@ -394,7 +394,7 @@ export class Users {
 							</tr>
 							<tr class="fragment">
 								<td>Defaults to two-way for input, one-way for everything else</td>
-								<td>Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></td>
+								<td>Two-way all the time</td>
 							</tr>
 							<tr class="fragment">
 								<td>Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code></td>
@@ -483,27 +483,27 @@ export class Users {
 						<h3>HMTL Customization</h3>
 							<table class="fragment">
 								<tr>
-									<th align="center">Angular</th>
 									<th align="center">Aurelia</th>
+									<th align="center">Angular</th>
 								</tr>
 								<tr>
 									<td>
 										<pre class="presentation-code"><code class="hljs" data-trim>
-<my-datepicker
-	data="user.dob">
+<require from="../components/mydatepicker">
+</require>
+&nbsp;
+<my-datepicker data.two-way="user.dob">
 </my-datepicker>
-										</code></pre>
-									</td>
+									</code></pre>
+								</td>
 									<td>
 										<pre class="presentation-code"><code class="hljs" data-trim>
-<require from="../components/mydatepicker"></require>
-&nbsp;
 <my-datepicker
-	data.two-way="user.dob">
+data="user.dob">
 </my-datepicker>
-										</code></pre>
-									</td>
-								</tr>
+									</code></pre>
+								</td>
+						</tr>
 							</table>
 						<p class="fragment">Usage looks similar, devil is in the implementation details...</p>
 					</section>
