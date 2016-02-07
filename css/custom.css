@@ -103,7 +103,8 @@
 }
 
 .dom-manipulation .emphasis,
-.ang-dir .emphasis {
+.ang-dir .emphasis,
+.scope-parent .emphasis {
   font-style: italic;
   color: #cd230f;
 }
@@ -123,7 +124,8 @@
 }
 
 .ang-dir p,
-.dom-manipulation p {
+.dom-manipulation p,
+.scope-parent p {
   text-align: left;
   font-style: italic;
 }
