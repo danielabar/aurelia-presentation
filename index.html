@@ -314,7 +314,7 @@ export class Users {
 					</section>
 
 					<section data-state="db-aurelia">
-						<h2>Data Binding: The Aurelia Way</h2>
+						<h2>Data Binding: Aurelia</h2>
 						<ul>
 							<li class="fragment">Append <code>.bind</code> to any html or custom attribute</li>
 							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
@@ -337,11 +337,10 @@ export class Users {
 
 					<section data-state="dom-manipulation">
 						<h3>DOM Manipulation</h3>
-						<p>Example: Integrate custom datepicker with data binding</p>
 							<table class="fragment">
 								<tr>
-									<td align="center">Angular</td>
-									<td align="center">Aurelia</td>
+									<th align="center">Angular</th>
+									<th align="center">Aurelia</th>
 								</tr>
 								<tr>
 									<td>
@@ -472,7 +471,7 @@ export class DatePicker {
 				</section>
 
 				<section data-state="ang-dir">
-					<h2>Custom Element: Datpicker</h2>
+					<h2>Custom Element: Datepicker</h2>
 					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 bind() {
 	// Find input element
@@ -502,14 +501,16 @@ bind() {
 				<section data-state="ang-dir">
 					<h2>Custom Element: Update</h2>
 					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
-dataChanged(newVal, oldVal) {
-	// this.data is automatically bound to newVal
-	this.selector.datepicker('setDate', this.data);
+export class DatePicker {
+
+	dataChanged(newVal, oldVal) {
+		this.selector.datepicker('setDate', this.data);
+	}
 }
 					</code></pre>
 					<div class="hack-col-right">
 						<p class="fragment">
-							<code>this.data</code> automatically bound to <code>newVal</code>. <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">full example</a>
+							<code>this.data</code> automatically bound to <code>newVal</code>. <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">Full example</a>
 						</p>
 					</div>
 				</section>

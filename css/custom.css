@@ -67,6 +67,13 @@
   text-align: left;
 }
 
+.dom-manipulation table {
+  margin-left: -10%;
+  margin-top: none;
+  margin-bottom: none;
+  margin-right: none;
+}
+
 .dom-manipulation .emphasis,
 .ang-dir .emphasis {
   font-style: italic;
@@ -83,12 +90,14 @@
   text-align: left;
 }
 
-.ang-dir p {
+.ang-dir p,
+.dom-manipulation p {
   text-align: left;
   font-style: italic;
 }
 
-.angular-compare-summary tr th {
+.angular-compare-summary tr th,
+.dom-manipulation tr th {
   text-transform: uppercase;
   color: #cd230f;
   font-style: italic;
