@@ -1,4 +1,9 @@
 /* ---------------------------------- */
+/* Accent: #cd230f                    */
+/* ---------------------------------- */
+
+
+/* ---------------------------------- */
 /* The hackey way to customize        */
 /* ---------------------------------- */
 
@@ -8,7 +13,7 @@
   height: 1.5em;
   margin: 5px !important;
   padding: 5px !important;
-  border: 2px solid red !important;
+  border: 3px solid #cd230f !important;
   border-radius: 3px !important;
   background: #5A5859 !important;
   font-family: monospace !important;
@@ -34,6 +39,11 @@
 /* ---------------------------------- */
 /* The right way to customize         */
 /* ---------------------------------- */
+
+.subsection-start h2 {
+  color: #cd230f;
+  font-size: 2em;
+}
 
 .just-es td {
     vertical-align: middle;
@@ -61,7 +71,7 @@
 }
 
 .dependency-injection table td code {
-  color: #e41137;
+  color: #cd230f;
 }
 
 .di-aurelia table {
