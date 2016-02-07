@@ -34,18 +34,31 @@
 /* ---------------------------------- */
 /* The right way to customize         */
 /* ---------------------------------- */
+
+.just-es td {
+    vertical-align: middle;
+}
+
+.just-es pre code {
+  padding: 20px;
+}
+
 .dependency-injection p {
   text-align: left;
 }
+
 .dependency-injection table {
   margin: none; /* override reveal's margin: auto */
   margin-left: 3%;
 }
+
 .dependency-injection table td,
 .dom-manipulation table td,
-.angular-compare-summary table td {
+.angular-compare-summary table td,
+.just-es table td {
   border-bottom: none;
 }
+
 .dependency-injection table td code {
   color: #e41137;
 }
@@ -54,7 +67,8 @@
   margin-left: -20%;
 }
 
-.di-aurelia pre {
+.di-aurelia pre,
+.just-es pre {
   width: 100%;
 }
 

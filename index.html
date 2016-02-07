@@ -172,35 +172,41 @@
 
 					<section data-state="just-es">
 						<h2>Aurelia: ES6</h2>
-						<div class="fragment example1">
-							<p>View model (Angular controller)</p>
-							<pre class="presentation-code"><code class="hljs" data-trim>
+						<table>
+							<tr class="fragment">
+								<td>View Model<br>(Controller)</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
 export class Users {
 	constructor() { ... }
 	activate() { ... }
 }
-							</code></pre>
-						</div>
-						<div class="fragment example2">
-							<p>Service</p>
-							<pre class="presentation-code"><code class="hljs" data-trim>
+									</code></pre>
+								</td>
+							</tr>
+							<tr class="fragment">
+								<td>Service<br>(Factory)</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
 export class MyService {
 	constructor() { ... }
 	doSomething() { ... }
 }
-							</code></pre>
-						</div>
-						<div class="fragment example3">
-							<p>Value Converter (Angular filter)</p>
-							<pre class="presentation-code"><code class="hljs" data-trim>
-import numeral from 'numeral';
+									</code></pre>
+								</td>
+							</tr>
+							<tr class="fragment">
+								<td>Value Converter<br>(Filter)</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
 export class CurrencyFormaValueConverter {
-	toView(value) {
-		return numeral(value).format('($0,0.00)');
-	}
+	constructor() { ... }
+	toView(value) { ... }
 }
-							</code></pre>
-						</div>
+									</code></pre>
+								</td>
+							</tr>
+						</table>
 					</section>
 
 					<section>
@@ -534,7 +540,7 @@ export class DatePicker {
 						</tr>
 						<tr class="fragment">
 							<td>Web standards</td>
-							<td>Angular specific &ldquo;DSL&rdquo;</td>
+							<td>&ldquo;The Angular Way&rdquo;</td>
 						</tr>
 						<tr class="fragment">
 							<td>Simple DOM maniuplation</td>
