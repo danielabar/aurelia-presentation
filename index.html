@@ -155,6 +155,16 @@
 					</section>
 
 					<section>
+						<h2>Similarities</h2>
+						<ul>
+							<li class="fragment">Make SPA development easier</li>
+							<li class="fragment">Routing and deep linking to any view</li>
+							<li class="fragment">Data binding</li>
+							<li class="fragment">HTML customization</li>
+						</ul>
+					</section>
+
+					<section>
 						<h2>&ldquo;Angular Script&rdquo;</h2>
 							<p>
 								<span class="fragment block">angular.module</span>
@@ -247,8 +257,8 @@ export class App {
 					<section data-state="dependency-injection">
 						<h2>Dependency Injection: Angular</h2>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-angular.module('myappApp').controller('UserlistCtrl',
-	function (users, UserService, $rootScope, toaster, $state) {
+angular.module('myApp').controller('UserlistCtrl',
+	function (users, UserService, $rootScope, toastr, $state) {
 		// ...
 });
 						</code></pre>
@@ -266,7 +276,7 @@ angular.module('myappApp').controller('UserlistCtrl',
 								<td>Angular core</td>
 							</tr>
 							<tr class="fragment">
-								<td><code>toaster</code></td>
+								<td><code>toastr</code></td>
 								<td>Notification library</td>
 							</tr>
 							<tr class="fragment">
@@ -383,7 +393,7 @@ export class Users {
 								<td>Uses Angular-specific custom attributes</td>
 							</tr>
 							<tr class="fragment">
-								<td>Defaults to two-way for input, one-way for everthing else</td>
+								<td>Defaults to two-way for input, one-way for everything else</td>
 								<td>Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></td>
 							</tr>
 							<tr class="fragment">
@@ -404,6 +414,7 @@ export class Users {
 								<th>Aurelia</th>
 								<th>Angular</th>
 							</tr>
+							<!-- Example 1: Input binding -->
 							<tr class="fragment">
 								<td>
 									<pre class="presentation-code"><code class="hljs" data-trim>
@@ -416,22 +427,7 @@ export class Users {
 									</code></pre>
 								</td>
 							</tr>
-							<tr class="fragment">
-								<td>
-									<pre class="presentation-code"><code class="hljs" data-trim>
-<div show.bind="hasError" class="error">
-	${err.message}
-</div>
-									</code></pre>
-								</td>
-								<td>
-									<pre class="presentation-code"><code class="hljs" data-trim>
-<div ng-show="hasError" class="error">
-	{{ err.message }}
-</div>
-									</code></pre>
-								</td>
-							</tr>
+							<!-- Example 2: Class binding -->
 							<tr class="fragment">
 								<td>
 									<pre class="presentation-code"><code class="hljs" data-trim>
@@ -448,25 +444,43 @@ export class Users {
 									</code></pre>
 								</td>
 							</tr>
+							<!-- Example 3: Binding to custom attribute 'show' -->
 							<tr class="fragment">
 								<td>
 									<pre class="presentation-code"><code class="hljs" data-trim>
-<my-datepicker data="user.dob">
-</my-datepicker>
+<div show.bind="hasError" class="error">
+	${err.message}
+</div>
 									</code></pre>
 								</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<div ng-show="hasError" class="error">
+	{{ err.message }}
+</div>
+									</code></pre>
+								</td>
+							</tr>
+							<!-- Example 4: Explicit two-way binding for custom element -->
+							<tr class="fragment">
 								<td>
 									<pre class="presentation-code"><code class="hljs" data-trim>
 <my-datepicker data.two-way="user.dob">
 </my-datepicker>
 									</code></pre>
 								</td>
+								<td>
+								<pre class="presentation-code"><code class="hljs" data-trim>
+<my-datepicker data="user.dob">
+</my-datepicker>
+								</code></pre>
+								</td>
 							</tr>
 						</table>
 					</section>
 
 					<section data-state="dom-manipulation">
-						<h3>DOM Manipulation</h3>
+						<h3>HMTL Customization</h3>
 							<table class="fragment">
 								<tr>
 									<th align="center">Angular</th>
@@ -514,7 +528,7 @@ angular.module('myApp').directive('myDatepicker',
 						</code></pre>
 						<div class="hack-col-right">
 							<p class="fragment">Configure template</p>
-							<p class="fragment">Isolated scope (ow can access parent!)</p>
+							<p class="fragment">Isolate scope (o.w. can access parent!)</p>
 							<p class="fragment">Controller function runs first</p>
 							<p class="fragment">Link function runs last</p>
 							<p class="fragment"><a href="http://odetocode.com/blogs/scott/archive/2014/05/28/compile-pre-and-post-linking-in-angularjs.aspx">Directive Lifecycle</a></p>
@@ -619,7 +633,6 @@ bind() {
 }
 					</code></pre>
 					<div class="hack-col-right">
-						<p class="fragment">Bind lifecycle method invoked when view is bound.</p>
 						<p class="fragment">Changing data in datepicker event just works.</p>
 						<p class="fragment">No internal framework knowledge required.</p>
 					</div>
