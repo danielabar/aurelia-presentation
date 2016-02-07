@@ -255,7 +255,7 @@ angular.module('myappApp').controller('UserlistCtrl',
 						<table>
 							<tr class="fragment">
 								<td><code>users</code></td>
-								<td>Router resolve</td>
+								<td>Router resolve (data!)</td>
 							</tr>
 							<tr class="fragment">
 								<td><code>UserService</code></td>
@@ -279,18 +279,21 @@ angular.module('myappApp').controller('UserlistCtrl',
 					<section data-state="di-aurelia">
 						<h2>Dependency Injection: Aurelia</h2>
 						<!-- First code snippet -->
-						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
+						<div class="fragment">
+						<pre class="hack-col-left presentation-code "><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 import {EventAggregator} from
 	'aurelia-event-aggregator';
 import * as toastr from 'toastr';
 						</code></pre>
-						<div class="fragment hack-col-right">
+						<div class=" hack-col-right">
 							<p>Dependencies imported</p>
 						</div>
+						</div>
 						<!-- Second code snippet -->
-						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
+						<div class="fragment">
+						<pre class="hack-col-left presentation-code "><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 import {EventAggregator} from
@@ -302,12 +305,14 @@ export class Users {
 
 }
 						</code></pre>
-						<div class="fragment hack-col-right">
+						<div class=" hack-col-right">
 							<p>Dependencies imported</p>
 							<p>Injection via decorator</p>
 						</div>
+						</div>
 						<!-- Third code snippet -->
-						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
+						<div class="fragment">
+						<pre class="hack-col-left presentation-code "><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 import {EventAggregator} from
@@ -324,10 +329,11 @@ export class Users {
 	}
 }
 						</code></pre>
-						<div class="fragment hack-col-right">
+						<div class=" hack-col-right">
 							<p>Dependencies imported</p>
 							<p>Injection via decorator</p>
 							<p>Deps injected as constructor args</p>
+						</div>
 						</div>
 						<!-- Fourth code snippet -->
 						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
