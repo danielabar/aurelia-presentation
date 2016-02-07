@@ -316,7 +316,7 @@ export class Users {
 					<section data-state="db-aurelia">
 						<h2>Data Binding: The Aurelia Way</h2>
 						<ul>
-							<li class="fragment">Append <code>.bind</code> to any html attribute</li>
+							<li class="fragment">Append <code>.bind</code> to any html or custom attribute</li>
 							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
 							<li class="fragment">Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code></li>
 							<li class="fragment"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> used to pick optimal observation strategy and minimize dirty checking</li>
@@ -331,12 +331,12 @@ export class Users {
 <div class.bind="row.isActive ? 'active' : ''">some content</div>
 						</code></pre>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<my-custom-el data.two-way="user.dob"></my-custom-el>
+<my-datepicker data.two-way="user.dob"></my-datepicker>
 						</code></pre>
 					</section>
 
 					<section data-state="dom-manipulation">
-						<h3>DOM Manipulation <span class="emphasis">outside</span> framework</h3>
+						<h3>DOM Manipulation</h3>
 						<p>Example: Integrate custom datepicker with data binding</p>
 							<table class="fragment">
 								<tr>
@@ -392,83 +392,88 @@ angular.module('myApp').directive('myDatepicker',
 						</div>
 					</section>
 
-					<section>
+					<section data-state="ang-dir">
 						<h2>Directive: Datepicker</h2>
-						<pre class="presentation-code"><code class="hljs" data-trim>
+						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// Initialize datepicker
 	$('input').datepicker();
 
 	// Try to update data binding?
-	$('input').datepicker().on('changeDate', function(e) {
-		scope.data = e.date;
-	});
+	$('input').datepicker().on('changeDate',
+		function(e) {
+			scope.data = e.date;
+		}
+	);
 }
 						</code></pre>
-						<p>Data binding will NOT update because event happened outside of Angular context</p>
-					</section>
-
-					<section>
-						<h2>Directive: Datepicker</h2>
-						<pre class="presentation-code"><code class="hljs" data-trim>
+						<div class="hack-col-right">
+							<p class="fragment">Element will not update because event happened outside of <span class="emphasis">Angular&rsquo;s context</span>.</p>
+						</div>
+						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// Initialize datepicker
 	$('input').datepicker();
 
 	// Update data binding
-	$('input').datepicker().on('changeDate', function(e) {
-		scope.$apply(function () {
-			scope.data = e.date;
-		});
+	$('input').datepicker().on('changeDate',
+		function(e) {
+			scope.$apply(function () {
+				scope.data = e.date;
+			});
 	});
 }
 						</code></pre>
-						<p>Use scope.$apply to trigger a digest cycle</p>
-						<p>Leaky abstraction, requires knowledge of framework's internals</p>
+						<div class="hack-col-right" style="top: 180%;">
+							<p class="fragment">Run update inside scope.$apply to trigger a digest cycle.</p>
+						</div>
 					</section>
 
-					<section>
+					<section data-state="ang-dir">
 						<h2>Directive: Watch</h2>
-						<h3>Populate Datepicker from Model</h3>
-						<pre class="presentation-code"><code class="hljs" data-trim>
+						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
-	scope.$watch('data', function(newVal) {
-    $('input').datepicker('setDate', scope.data);
-  });
+	scope.$watch('data',
+		function(newVal) {
+    	$('input').datepicker('setDate', newVal);
+  	});
 }
 						</code></pre>
-						<p>scope.$watch to add to list of watchers evaluated in digest cycle</p>
+						<div class="hack-col-right">
+							<p>To populate datepicker from model, use scope.$watch to add to list of watchers evaluated in digest cycle.</p>
+						</div>
 					</section>
 
-					<section>
-						<h2>Aurelia Custom Element</h2>
-						<ul>
-							<li>Works seamlessly with data binding</li>
-							<li>Finds view template by convention</li>
-							<li>Clearly named lifecycle methods</li>
-						</ul>
-					</section>
-
-				<section data-transition="zoom">
-					<h2>Custom Element: Datepicker</h2>
-					<pre class="presentation-code"><code class="hljs" data-trim>
-import {inject, customElement, bindable} from 'aurelia-framework';
+				<section data-state="ang-dir">
+					<h2>Aurelia Custom Element</h2>
+					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
+import {inject, customElement, bindable}
+	from 'aurelia-framework';
 import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
 
 @customElement('my-datepicker')
 @inject(Element)
 export class DatePicker {
   @bindable data;
+
   constructor(element) { this.element = element; }
+
 	bind() { // DOM manipulation here... }
-  dataChanged(newVal) { // update datepicker here... }
+
+  dataChanged() { // update datepicker here... }
 }
 					</code></pre>
+					<div class="hack-col-right">
+						<p class="fragment">Bindable decorator for data binding</p>
+						<p class="fragment">View template loaded by convention</p>
+						<p class="fragment">Follows <a href="http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.1.1/doc/article/creating-components/3">Component Lifecycle</a></p>
+						<p class="fragment">xxxChanged method called for changes to bindable properties</p>
+					</div>
 				</section>
 
-				<section data-transition="zoom">
-					<h2>Custom Element: Data Binding</h2>
-					<pre class="presentation-code"><code class="hljs" data-trim>
+				<section data-state="ang-dir">
+					<h2>Custom Element: Datpicker</h2>
+					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 bind() {
 	// Find input element
 	this.selector = $(this.element).find('.date');
@@ -487,17 +492,26 @@ bind() {
 	}
 }
 					</code></pre>
+					<div class="hack-col-right">
+						<p class="fragment">Bind lifecycle method invoked when view is bound.</p>
+						<p class="fragment">Changing data in datepicker event just works.</p>
+						<p class="fragment">No internal frameowrk knowledge required.</p>
+					</div>
 				</section>
 
-				<section>
+				<section data-state="ang-dir">
 					<h2>Custom Element: Update</h2>
-					<pre class="presentation-code"><code class="hljs" data-trim>
+					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 dataChanged(newVal, oldVal) {
 	// this.data is automatically bound to newVal
 	this.selector.datepicker('setDate', this.data);
 }
 					</code></pre>
-					<p>See <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">full example</a></p>
+					<div class="hack-col-right">
+						<p class="fragment">
+							<code>this.data</code> automatically bound to <code>newVal</code>. <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">full example</a>
+						</p>
+					</div>
 				</section>
 
 				<!--

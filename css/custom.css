@@ -67,7 +67,8 @@
   text-align: left;
 }
 
-.dom-manipulation .emphasis {
+.dom-manipulation .emphasis,
+.ang-dir .emphasis {
   font-style: italic;
   color: #cd230f;
 }
