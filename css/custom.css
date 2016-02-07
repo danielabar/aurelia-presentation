@@ -55,6 +55,7 @@
 .dependency-injection table td,
 .dom-manipulation table td,
 .angular-compare-summary table td,
+.angular-db-compare table td,
 .just-es table td {
   border-bottom: none;
 }
@@ -86,6 +87,14 @@
   text-align: left;
 }
 
+.angular-db-compare table {
+  margin-left: -15%;
+}
+
+.angular-db-compare pre {
+  margin-left: 0;
+}
+
 .dom-manipulation table {
   margin-left: -10%;
   margin-top: none;
@@ -97,6 +106,10 @@
 .ang-dir .emphasis {
   font-style: italic;
   color: #cd230f;
+}
+
+.angular-db-compare pre {
+  width: 100%;
 }
 
 .dom-manipulation pre {
@@ -115,6 +128,7 @@
   font-style: italic;
 }
 
+.angular-db-compare tr th,
 .angular-compare-summary tr th,
 .dom-manipulation tr th {
   text-transform: uppercase;

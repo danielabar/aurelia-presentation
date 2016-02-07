@@ -369,45 +369,100 @@ export class Users {
 						</div>
 					</section>
 
-					<section>
-						<h2>Data Binding: Angular</h2>
-						<ul>
-							<li class="fragment">Uses Angular-specific custom attributes</li>
-							<li class="fragment">Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></li>
-							<li class="fragment">Each binding adds $watch to $watch list</li>
-							<li class="fragment">Changes trigger $digest cycle (aka dirty checking)</li>
-						</ul>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<input type="text" ng-model="user.name">
-						</code></pre>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<div ng-show="hasError" class="error">{{ err.message }}</div>
-						</code></pre>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<div ng-class="$even ? 'even-row' : 'odd-row'">some content</div>
-						</code></pre>
+					<section data-state="angular-compare-summary">
+						<h2>Data Binding</h2>
+						<table>
+							<col width="60%">
+  						<col width="40%">
+							<tr>
+								<th>Aurelia</th>
+								<th>Angular</th>
+							</tr>
+							<tr class="fragment">
+								<td>Append <code>.bind</code> to any html or custom attribute</td>
+								<td>Uses Angular-specific custom attributes</td>
+							</tr>
+							<tr class="fragment">
+								<td>Defaults to two-way for input, one-way for everthing else</td>
+								<td>Two-way <span style="color: #cd230f; font-style: italic";>all the time</span></td>
+							</tr>
+							<tr class="fragment">
+								<td>Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code></td>
+								<td>Each binding adds $watch to $watch list</td>
+							</tr>
+							<tr class="fragment">
+								<td><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> used to pick optimal observation strategy and minimize dirty checking</td>
+								<td>Changes trigger $digest cycle (dirty checking)</td>
+							</tr>
+						</table>
 					</section>
 
-					<section data-state="db-aurelia">
-						<h2>Data Binding: Aurelia</h2>
-						<ul>
-							<li class="fragment">Append <code>.bind</code> to any html or custom attribute</li>
-							<li class="fragment">Defaults to two-way for input, one-way for everthing else</li>
-							<li class="fragment">Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code></li>
-							<li class="fragment"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> used to pick optimal observation strategy and minimize dirty checking</li>
-						</ul>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+					<section data-state="angular-db-compare">
+						<h2>Data Binding Examples</h2>
+						<table>
+							<tr>
+								<th>Aurelia</th>
+								<th>Angular</th>
+							</tr>
+							<tr class="fragment">
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
 <input type="text" value.bind="user.name">
-						</code></pre>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<div show.bind="hasError" class="error">${err.message}</div>
-						</code></pre>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<div class.bind="row.isActive ? 'active' : ''">some content</div>
-						</code></pre>
-						<pre class="fragment presentation-code"><code class="hljs" data-trim>
-<my-datepicker data.two-way="user.dob"></my-datepicker>
-						</code></pre>
+									</code></pre>
+								</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<input type="text" ng-model="user.name">
+									</code></pre>
+								</td>
+							</tr>
+							<tr class="fragment">
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<div show.bind="hasError" class="error">
+	${err.message}
+</div>
+									</code></pre>
+								</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<div ng-show="hasError" class="error">
+	{{ err.message }}
+</div>
+									</code></pre>
+								</td>
+							</tr>
+							<tr class="fragment">
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<div class.bind="row.isActive ? 'active' : ''">
+	some content
+</div>
+									</code></pre>
+								</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<div ng-class="$even ? 'even-row' : 'odd-row'">
+	some content
+</div>
+									</code></pre>
+								</td>
+							</tr>
+							<tr class="fragment">
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<my-datepicker data="user.dob">
+</my-datepicker>
+									</code></pre>
+								</td>
+								<td>
+									<pre class="presentation-code"><code class="hljs" data-trim>
+<my-datepicker data.two-way="user.dob">
+</my-datepicker>
+									</code></pre>
+								</td>
+							</tr>
+						</table>
 					</section>
 
 					<section data-state="dom-manipulation">
@@ -598,7 +653,7 @@ export class DatePicker {
 					<table>
 						<tr>
 							<th>Aurelia</th>
-							<th>Angular 1.x</th>
+							<th>Angular</th>
 						</tr>
 						<tr class="fragment">
 							<td>Conventions</td>
