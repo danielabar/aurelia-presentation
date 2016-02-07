@@ -78,6 +78,7 @@
 
 .di-aurelia p {
   font-style: italic;
+  text-align: left;
 }
 
 .just-es .fragment p {

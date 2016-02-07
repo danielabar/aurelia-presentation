@@ -278,10 +278,19 @@ angular.module('myappApp').controller('UserlistCtrl',
 
 					<section data-state="di-aurelia">
 						<h2>Dependency Injection: Aurelia</h2>
-						<table>
-							<tr>
-								<td width="55%">
-									<pre class="presentation-code"><code class="hljs" data-trim>
+						<!-- First code snippet -->
+						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
+import {inject} from 'aurelia-framework';
+import {UserService} from 'users/user-service';
+import {EventAggregator} from
+	'aurelia-event-aggregator';
+import * as toastr from 'toastr';
+						</code></pre>
+						<div class="fragment hack-col-right">
+							<p>Dependencies imported</p>
+						</div>
+						<!-- Second code snippet -->
+						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
 import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 import {EventAggregator} from
@@ -291,28 +300,67 @@ import * as toastr from 'toastr';
 @inject(UserService, EventAggregator, toastr)
 export class Users {
 
-	constructor(userService, eventAggregator) {
+}
+						</code></pre>
+						<div class="fragment hack-col-right">
+							<p>Dependencies imported</p>
+							<p>Injection via decorator</p>
+						</div>
+						<!-- Third code snippet -->
+						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
+import {inject} from 'aurelia-framework';
+import {UserService} from 'users/user-service';
+import {EventAggregator} from
+	'aurelia-event-aggregator';
+import * as toastr from 'toastr';
+
+@inject(UserService, EventAggregator, toastr)
+export class Users {
+
+	constructor(userService, eventAggregator, toastr) {
 		this.userService = userService;
 		this.eventAggregator = eventAggregator;
 		this.toastr = toastr;
 	}
-	
+}
+						</code></pre>
+						<div class="fragment hack-col-right">
+							<p>Dependencies imported</p>
+							<p>Injection via decorator</p>
+							<p>Deps injected as constructor args</p>
+						</div>
+						<!-- Fourth code snippet -->
+						<pre class="hack-col-left presentation-code fragment"><code class="hljs" data-trim>
+import {inject} from 'aurelia-framework';
+import {UserService} from 'users/user-service';
+import {EventAggregator} from
+	'aurelia-event-aggregator';
+import * as toastr from 'toastr';
+
+@inject(UserService, EventAggregator, toastr)
+export class Users {
+
+	constructor(userService, eventAggregator, toastr) {
+		this.userService = userService;
+		this.eventAggregator = eventAggregator;
+		this.toastr = toastr;
+	}
+
 	activate(params) {
 		return this.userService.getAll()
 			.then( users => this.users = users );
 	}
 }
-										</code></pre>
-								</td>
-								<td width="45%">
-									<p class="fragment">Dependencies imported</p>
-									<p class="fragment">Injection via ES7 decorator</p>
-									<p class="fragment">Lifecycle activate</p>
-									<p class="fragment">Activate called with view state</p>
-									<p class="fragment"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#the-screen-activation-lifecycle">Screen Activation Lifecycle</a></p>
-								</td>
-							</tr>
-						</table>
+						</code></pre>
+						<div class="fragment hack-col-right">
+							<p>Dependencies imported</p>
+							<p>Injection via decorator</p>
+							<p>Deps injected as constructor args</p>
+							<p>
+								Lifecycle activate method invoked with view state.
+								<a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#the-screen-activation-lifecycle">Screen Activation Lifecycle</a>
+							</p>
+						</div>
 					</section>
 
 					<section>
