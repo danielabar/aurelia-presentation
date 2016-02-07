@@ -216,12 +216,12 @@ angular.module('myApp', [ 'ngRoute' ])
 	.config(function ($routeProvider) {
     $routeProvider
       .when('/users', {
-				templateUrl: 'views/userlist.html',
-        controller: 'UserlistCtrl',
-        controllerAs: 'userlist',
+				templateUrl: 'views/users.html',
+        controller: 'UsersController',
+        controllerAs: 'usersController',
         resolve: {
-          users: function(userservice) {
-            return userservice.fetchUsers();
+          users: function(UserService) {
+            return UserService.getAll();
           }
         }
 			})
@@ -286,13 +286,17 @@ import {inject} from 'aurelia-framework';
 import {UserService} from 'users/user-service';
 import {EventAggregator} from
 	'aurelia-event-aggregator';
+import * as toastr from 'toastr';
 
-@inject(UserService, EventAggregator)
+@inject(UserService, EventAggregator, toastr)
 export class Users {
+
 	constructor(userService, eventAggregator) {
 		this.userService = userService;
 		this.eventAggregator = eventAggregator;
+		this.toastr = toastr;
 	}
+	
 	activate(params) {
 		return this.userService.getAll()
 			.then( users => this.users = users );

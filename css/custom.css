@@ -72,6 +72,10 @@
   width: 100%;
 }
 
+.di-aurelia pre code {
+  max-height: 500px;
+}
+
 .di-aurelia p {
   font-style: italic;
 }
