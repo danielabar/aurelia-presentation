@@ -655,19 +655,34 @@ export class DatePicker {
 					</div>
 				</section>
 
-				 <section data-state="scope-parent">
-				 	<h2>Angular inheritance</h2>
+				<section data-state="scope-parent">
+				 	<h2>Angular Inheritance</h2>
 					<p>Components can access their parent via <code>$scope</code>.</p>
 					<p class="fragment">Prevents re-use and <span class="emphasis">leads to hard to track down bugs.</span></p>
 					<!-- <ul>
 						<li>In Aurelia, view models only have access to children by default</li>
 						<li>Can be configured for parent access, but default option is most sensible</li>
 					</ul> -->
-					<div class="fragment">
-					<p data-height="268" data-theme-id="0" data-slug-hash="pgxYVL" data-default-tab="html" data-user="danielabar" class='codepen'>See the Pen <a href='http://codepen.io/danielabar/pen/pgxYVL/'>Angular Demo Parent Child Madness</a> by Daniela Baron (<a href='http://codepen.io/danielabar'>@danielabar</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-					<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+					<div class="fragment pen-wrapper">
+						<p data-height="268" data-theme-id="0" data-slug-hash="pgxYVL" data-default-tab="html" data-user="danielabar" class='codepen'>See the Pen <a href='http://codepen.io/danielabar/pen/pgxYVL/'>Angular Demo Parent Child Madness</a> by Daniela Baron (<a href='http://codepen.io/danielabar'>@danielabar</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+						<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 					</div>
-				 </section>
+				</section>
+
+				<section data-state="scope-parent">
+					<h3>Aurelia Inheritance</h3>
+					<p>By default, components can not access their parent.</p>
+					<p class="fragment">Can be configured if needed:</p>
+					<pre class="fragment presentation-code"><code class="hljs" <data-trim></data-trim>
+export class ChildViewModel {
+
+  bind(bindingContext) {
+    this.$parent = bindingContext;
+  }
+	
+}
+					</code></pre>
+				</section>
 
 				<section data-state="angular-compare-summary">
 					<h2>Summary</h2>
