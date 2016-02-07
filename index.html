@@ -212,23 +212,34 @@ export class CurrencyFormaValueConverter {
 					<section>
 						<h2>&ldquo;Angular Script&rdquo; vs ES6</h2>
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
-angular.module('myApp', [ 'ngRoute', 'ngSanitize' ])
+angular.module('myApp', [ 'ngRoute' ])
 	.config(function ($routeProvider) {
     $routeProvider
-      .when('/', { ... config for Home route })
-      .when('/users', { ... config for Users route })
+      .when('/users', {
+				templateUrl: 'views/userlist.html',
+        controller: 'UserlistCtrl',
+        controllerAs: 'userlist',
+        resolve: {
+          users: function(userservice) {
+            return userservice.fetchUsers();
+          }
+        }
+			})
 			.otherwise({ redirectTo: '/' });
   });
 &nbsp;
 						</code></pre>
 						<pre class="fragment presentation-code hack-col-right"><code class="hljs" data-trim>
 export class App {
+
   configureRouter(config, router) {
     config.map([
       { route: ['', 'users'], moduleId: 'users' }
     ]);
+
     this.router = router;
   }
+
 }
 							</code></pre>
 					</section>
