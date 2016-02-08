@@ -67,14 +67,450 @@
 					<section>
 						<h2>ES6 Overview</h2>
 						<p>
-							is totally awesome...
+							JavaScript that doesn't suck :)
+						</p>
+					</section>
+					<section>
+						<h2><code>var</code> is dead.<br/>Long live <code>let</code> &amp; <code>const</code></h2>
+					</section>
+					<section>
+						<h3>Constants!</h3>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+var moment = require('moment');
+// is now
+const moment = require('moment');
+						</code></pre>
+					</section>
+					<section>
+						<h3>Block scoping!</h3>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+// this works. stop the insanity.
+for (var i=0; i<10; i++) {
+	console.log(i);
+}
+console.log(i);
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+// this does not work :)
+for (let i=0; i<10; i++) {
+	console.log(i);
+}
+console.log(i);
+					</code></pre>
+					</section>
+					<section>
+						<h2>Arrow Notation</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+[1,2,3].map(a => a+1);
+					  </code></pre>
+						<div class="fragment">
+							<h3>Lexical <code>this</code></h3>
+							<pre class="presentation-code fragment"><code class="hljs" data-trim>
+function() {
+	var self = this;
+	self.name = 'Sean';
+	setInterval(function() {
+		console.log(self.name); // ugly :(
+	});
+}
+						  </code></pre>
+							<pre class="presentation-code fragment"><code class="hljs" data-trim>
+function() {
+	this.name = 'Sean';
+	setInterval(() => {
+		console.log(this.name); // => shares the same this
+		                        // with the surrounding code!
+	});
+}
+						  </code></pre>
+						</div>
+					</section>
+					<section>
+						<h2>Classes<br/><small class="fragment">(finally)</small></h2>
+					</section>
+					<section>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+class Person {
+	constructor(firstName, lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	getFullName() {
+		return this.firstName + ' ' + this.lastName;
+	}
+}
+						</code></pre>
+					</section>
+					<section>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+class Developer extends Person {
+	// static method called with Developer.curse();
+	static curse() { return 'thou shalt forever be off by one...'; }
+
+	constructor(firstName, lastName, isRemote) {
+		super(firstName, lastName);
+		this._isRemote = isRemote;
+	}
+
+	// getter, used via developerInstance.isRemote
+	get isRemote() { return this._isRemote; }
+	// setter, used via developerInstance.isRemote = false
+	set isRemote(newIsRemote) {
+		throw new Error('Cannot re-assign isRemote!');
+	}
+}
+						</code></pre>
+					</section>
+					<section>
+						<p>
+							Built-in classes like <code>Array</code>, <code>Date</code> and DOM <code>Element</code>s can be subclassed!
 						</p>
 					</section>
 					<section>
 						<h2>Modules</h2>
+						<p class="fragment">
+							Making module syntax a native part of the language!
+						</p>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+// lib/math.js
+export function sum(x, y) {
+  return x + y;
+}
+export var pi = 3.141593;
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+// app.js
+import * as math from "lib/math";
+alert("2π = " + math.sum(math.pi, math.pi));
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+// otherApp.js
+import {sum, pi} from "lib/math";
+alert("2π = " + sum(pi, pi));
+						</code></pre>
 					</section>
 					<section>
-						<h2>Classes</h2>
+						<h2>Template strings</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+/* before, in Person, we had this: */
+getFullName() {
+	return this.firstName + ' ' + this.lastName;
+}
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+/* now we can do this!*/
+getFullName() {
+	return `${this.firstName} ${this.lastName}`;
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>for...of (Iterators)</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+let a = ['a','b','c'];
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+for (let i in a) {
+  console.log(i);
+}
+// prints 0 1 2 (which is pretty useless)
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+for (let i of a) {
+	console.log(prop);
+}
+// prints a b c :)
+						</code></pre>
+						<p class="fragment">
+							You can use the Iterator protocol in your own functions and classes to make anything iterable via <code>for...of</code>
+						</p>
+					</section>
+					<section>
+						<h2>Default, Rest and Spread</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+function f(x, y=12) {
+  // y is 12 if not passed (or passed as undefined)
+  return x + y;
+}
+f(3) == 15
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+function f(x, ...y) {
+  // y is an Array
+  return x * y.length;
+}
+f(3, "hello", true) == 6
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+function f(x, y, z) {
+  return x + y + z;
+}
+// Pass each elem of array as argument
+f(...[1,2,3]) == 6
+						</code></pre>
+					</section>
+					<section>
+						<h2>Destructuring</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+let a, b, rest;
+
+[a, b] = [1, 2]
+{a, b} = {a:1, b:2}
+// a === 1, b === 2
+
+[a, b, ...rest] = [1, 2, 3, 4, 5]
+// a === 1, b === 2, rest === [3,4,5]
+						</code></pre>
+					</section>
+					<section>
+						<h2>Destructuring<br/> <small>(multiple return values)</small></h2>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+function f() {
+	return [1,2];
+}
+[a, b] = f();
+						</code></pre>
+					</section>
+					<section>
+						<h2><code>Set</code>s and <code>Map</code>s</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+const s = new Set();
+s.add("hello").add("goodbye").add("hello");
+s.size === 2;
+s.has("hello") === true;
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+const m = new Map();
+m.set("hello", 42);
+m.set("goodbye", 34);
+m.get("goodbye") == 34;
+						</code></pre>
+					</section>
+					<section>
+						<h2><code>WeakMap</code>s and <code>WeakSet</code>s</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+const obj = {
+	// ...
+}
+						</code></pre>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+const wm = new WeakMap();
+wm.set(obj, 42); // store some metadata about obj.
+						</code></pre>
+						<ul>
+							<li class="fragment">Keys in a <code>WeakMap</code> must be objects</li>
+							<li class="fragment"><code>WeakMap</code>s do not hold a strong reference to their keys.</li>
+							<li class="fragment">Great way to store additional metadata on an object without polluting it.</li>
+							<li class="fragment">WeakSets are similar</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Native <code>Promise</code>s</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+const p = new Promise(function(resolve, reject) {
+	setTimeout(() => {
+		Math.random() < 0.5 ? resolve() : reject();
+	}, 500);
+});
+
+p.then(() => {
+	console.log('Resolved!');
+})
+.catch(() => {
+	console.log('Rejected!');
+});
+						</code></pre>
+					</section>
+					<section>
+						<h2>Generators</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+function *getTime() {
+	while(true) {
+		yield Date.now();
+	}
+}
+const timer = getTime();
+console.log(timer.next()); // { value: 1454906307698, done: false }
+console.log(timer.next()); // { value: 1454906307710, done: false }
+console.log(timer.next()); // { value: 1454906307711, done: false }
+						</code></pre>
+						<p class="fragment">You can also use the <code>for...of</code> loop with Generators :)</p>
+					</section>
+					<section>
+						<h2>Generators<br/><small>two-way communication</small></h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+const summer = (function *sum() {
+	let sum = 0;
+	while(true) {
+		sum += yield sum;
+	}
+})();
+summer.next(); // start summer by making it yield once
+// now we can pump values into it, and receive the current sum
+console.log(summer.next(1)); // { value: 1, done: false }
+console.log(summer.next(2)); // { value: 3, done: false }
+console.log(summer.next(3)); // { value: 6, done: false }
+						</code></pre>
+						<p class="fragment"><small>Calling <code>next()</code> on a generator makes it pause execution. When the generator is restarted by another call to <code>next()</code>, the argument passed to <code>next()</code> replaces the yield expression.</small></p>
+					</section>
+					<section>
+						<h2>Now for the crazy part...</h2>
+					</section>
+					<section>
+						<h2>Generators</br><small>as a way to avoid callbacks</small></h2>
+						<div class="fragment">
+							<p>
+								 Let's say we have some asynchronous function<br/> returning a Promise:
+							</p>
+							<pre class="presentation-code"><code class="hljs" data-trim>
+function longRunning(done) {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(Math.random());
+		}, 500);
+	});
+}
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<p>Normally, we'd use it like this:</p>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+longRunning.then((result) => {
+	console.log(result);
+})
+						</code></pre>
+					</section>
+					<section>
+						<div>
+							<p>But now we can do something like this...</p>
+							<pre class="presentation-code"><code class="hljs" data-trim>
+const script = function *() {
+	let s = yield longRunning();
+	console.log(s);
+}();
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<p>With the assistance of this horrifying statement:</p>
+							<pre class="presentation-code"><code class="hljs" data-trim>
+script.next().value.then((r) => {
+	script.next(r);
+});
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<p>
+							Treating async code like it's synchronous is awesome!
+						</p>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+const script = function *() {
+	let s = yield longRunning(); // so cool!
+	console.log(s);
+}();
+						</code></pre>
+						<p class="fragment">
+							So how do we avoid the horror?
+						</p>
+					</section>
+					<section>
+						<h2>ES2016 <code>async...await</code></h2>
+						<div class="fragment">
+							<pre class="presentation-code"><code class="hljs" data-trim>
+const script = function *() {
+	let s = yield longRunning();
+	console.log(s);
+}();
+script.next().value.then((r) => {
+	script.next(r);
+});
+							</code></pre>
+						</div>
+						<p class="fragment">
+							becomes...
+						</p>
+						<div class="fragment">
+							<pre class="presentation-code"><code class="hljs" data-trim>
+(async function script() {
+	let s = await longRunning(); // even cooler!
+	console.log(s);
+})();
+// no ugliness!
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<p>
+							Or, more realistically...
+						</p>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+(async function script() {
+	try {
+		let s = await longRunning(); // sequential async
+		let t = await anotherLongRunning();
+		console.log(s + t);
+	} catch (err) {
+		console.error(err);
+	}
+})();
+						</code></pre>
+						<p class="fragment">
+							Notice that good old-fashioned <code>try-catch</code> blocks work again!
+						</p>
+					</section>
+					<section>
+						<p>
+							Or, for parallel async
+						</p>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+(async function script() {
+	try {
+		let [s,t] = await Promise.all(
+			longRunning(),
+			anotherLongRunning()
+		);
+		console.log(s + t);
+	} catch (err) {
+		console.error(err);
+	}
+})();
+						</code></pre>
+					</section>
+					<section>
+						<p>Almost all of this is available in Node.js natively, right now!</p>
+						<p class="fragment">
+							If you're not using it...start. My eyes will thank you.
+						</p>
+						<div class="fragment">
+							<p>
+								If you want to use this in the browser, you'll need to use a <strong>transpiler</strong> until the ES2015 and ES2016 specifications are implemented natively. Popular transpilers include:
+							</p>
+							<ul>
+								<li><a href="http://babeljs.io/">Babel</a></li>
+								<li><a href="https://github.com/google/traceur-compiler">Traceur</a></li>
+							</ul>
+						</div>
+					</section>
+					<section>
+						<h2>ES2015/ES2016<br/><small>Further reading</small></h2>
+						<p>
+							For more information, the <a href="http://babeljs.io/docs/learn-es2015/">Babel docs</a> are a good reference
+						</p>
+						<p>
+							As is the Mozilla Developer Network <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JavaScript reference</a>
+						</p>
+						<div class="fragment">
+							Stuff I didn't cover:
+							<ul>
+								<li>Symbols (new basic type, allowing private class members)</li>
+								<li>Proxies</li>
+								<li>New Math, Number, String and Object APIs</li>
+								<li>Binary and Octal literals</li>
+								<li>Reflection API</li>
+								<li>Tail recursion</li>
+							</ul>
+						</div>
 					</section>
 				</section>
 				<!-- END Sean: ES6 Overview -->
