@@ -162,6 +162,30 @@ class Developer extends Person {
 						</code></pre>
 					</section>
 					<section>
+						<h2>Decorators</h2>
+						<pre class="presentation-code fragment"><code class="hljs" data-trim>
+@isTestable(true)
+class Person {
+	constructor(firstName, lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	@readonly
+	getFullName() {
+		return this.firstName + ' ' + this.lastName;
+	}
+}
+						</code></pre>
+						<div class="fragment">
+							<p>
+								Decorators are annotations which allow you to define cross-cutting modifications to classes and methods.
+							</p>
+							<p>
+								Decorators are executed at runtime.
+							</p>
+						</div>
+					</section>
+					<section>
 						<p>
 							Built-in classes like <code>Array</code>, <code>Date</code> and DOM <code>Element</code>s can be subclassed!
 						</p>
