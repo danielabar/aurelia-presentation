@@ -45,6 +45,10 @@
   font-size: 2em;
 }
 
+.subsection-start h2.extra-large {
+  font-size: 4em;
+}
+
 .just-es td {
     vertical-align: middle;
 }
