@@ -1050,28 +1050,25 @@ link: function(scope, element) {
 				<section data-state="ang-dir">
 					<h2>Aurelia Custom Element</h2>
 					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
-import {inject, customElement, bindable}
-	from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
 
-@customElement('my-datepicker')
 @inject(Element)
-export class DatePicker {
+export class MyDatepickerCustomElement {
   @bindable data;
 
   constructor(element) { this.element = element; }
 
-	bind() { // DOM manipulation here... }
+	bind() { // DOM manipulation... }
 
-  dataChanged() { // update datepicker here... }
+	unbind() { // Cleanup... }
 }
 					</code></pre>
 					<div class="hack-col-right">
-						<p class="fragment">Decorator marks this as custom element.</p>
+						<p class="fragment">Naming convention marks this as custom element.</p>
 						<p class="fragment">Bindable decorator for data binding.</p>
 						<p class="fragment">View template loaded by convention.</p>
-						<p class="fragment">bind is a <a href="http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.1.1/doc/article/creating-components/3">Component Lifecycle</a> method.</p>
-						<p class="fragment">xxxChanged method called for changes to bindable properties</p>
+						<p class="fragment"><code>bind</code> and <code>unbind</code> are <a href="http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.1.1/doc/article/creating-components/3">Component Lifecycle</a> methods.</p>
 					</div>
 				</section>
 
@@ -1106,11 +1103,13 @@ export class DatePicker {
 	dataChanged(newVal, oldVal) {
 		this.selector.datepicker('setDate', this.data);
 	}
+
 }
 					</code></pre>
 					<div class="hack-col-right">
+						<p class="fragment">xxxChanged method called for changes to bindable properties.</p>
 						<p class="fragment">
-							<code>this.data</code> automatically bound to <code>newVal</code>. <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">Full example</a>
+							<code>this.data</code> automatically populated with <code>newVal</code>. <a href="https://github.com/danielabar/aurelia-pluralsight/blob/master/movies-client/public/components/datepicker.js">Full example</a>
 						</p>
 					</div>
 				</section>
@@ -1118,11 +1117,7 @@ export class DatePicker {
 				<section data-state="scope-parent">
 				 	<h2>Angular Inheritance</h2>
 					<p>Components can access their parent via <code>$scope</code>.</p>
-					<p class="fragment">Prevents re-use and <span class="emphasis">leads to hard to track down bugs.</span></p>
-					<!-- <ul>
-						<li>In Aurelia, view models only have access to children by default</li>
-						<li>Can be configured for parent access, but default option is most sensible</li>
-					</ul> -->
+					<p class="fragment">Prevents re-use and leads to hard to track down bugs due to <span class="emphasis">prototypal inheritance.</span></p>
 					<div class="fragment pen-wrapper">
 						<p data-height="350" data-theme-id="0" data-slug-hash="pgxYVL" data-default-tab="html" data-user="danielabar" class='codepen'>See the Pen <a href='http://codepen.io/danielabar/pen/pgxYVL/'>Angular Demo Parent Child Madness</a> by Daniela Baron (<a href='http://codepen.io/danielabar'>@danielabar</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 						<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
