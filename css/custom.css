@@ -144,8 +144,19 @@
   font-style: italic;
 }
 
+.angular-compare-summary section img {
+  border: none;
+  background: none;
+  box-shadow: none;
+  width: 270px;
+  height: 90px;
+}
+
+.angular-compare-summary table th {
+  border-bottom: none;
+}
+
 .angular-db-compare tr th,
-.angular-compare-summary tr th,
 .dom-manipulation tr th {
   text-transform: uppercase;
   color: #cd230f;
