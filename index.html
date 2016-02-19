@@ -549,7 +549,7 @@ script.next().value.then((r) => {
 					</section>
 					<section>
 						<h2>Javascript</h2>
-						<p>
+						<p class="fragment">
 							Just Javascript...
 						</p>
 					</section>
@@ -562,11 +562,89 @@ script.next().value.then((r) => {
 								<li>Enhances Web Components</li>
 							</ul>
 						</p>
+						
+						<img width="80%" height="auto" class="fragment" data-src="images/happiness.gif" alt="Aurelia Logo"
+							style="border: none; background: none; box-shadow: none;">
+					</section>
+
+					<section>
+						<h2>ES6 / ES7</h2>
+						<small>What Sean said... (a couple of examples)</small>
+						<p>
+							<h3>
+								Modules and Decorators
+							</h3>
+							<pre class="presentation-code">
+								<code>
+import { inject, bindable } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
+import { UsersService, RolesService } from 'auth-services';
+import { User } from 'auth-models';
+
+@inject(UsersService, RolesService, Router)
+export class UsersFormView {
+	...
+}
+								</code>
+							</pre>
+						</p>
+					</section>
+
+					<section>
+						<h2>Web Components</h2>
+						<p>
+							<span>Follows Web Component Standards for:</span>
+							<ul>
+								<li><a href="https://www.w3.org/TR/html5/scripting-1.html#the-template-element">Uses HTML5 Template</a></li>
+								<li>Scoped CSS</li>
+								<li>Components as Modules</li>
+							</ul>
+						</p>
+					</section>
+
+
+					<section>
+						<h2>Web Components...</h2>
+						<small>What does Aurelia add?</small>
+						<p>
+							<span>Added support for javascript enabled behavior</span>
+							<ul>
+								<li>Simple binding behaviours in templates</li>
+								<li>Managed Component Lifecycle
+									<ul>
+										<li>Contructor</li>
+										<li>Created</li>
+										<li>Bind</li>
+										<li>Attached</li>
+										<li>Detached</li>
+										<li>Unbind</li>
+									</ul>
+								</li>
+								<li>Components as Modules!</li>
+
+							</ul>
+						</p>
 					</section>
 
 					<section>
 						<h2>Zero External Dependencies</h2>
 						<small>* exluding polyfills</small>
+						<p>
+						<ul class="fragment">
+							<li>aurelia-framework</li>
+							<li>aurelia-router</li>
+							<li>aurelia-fetch-client</li>
+							<li>aurelia-history</li>
+							<li>aurelia-logging</li>
+							<li>aurelia-logging-console</li>
+							<li>aurelia-animator-css</li>
+							<li>aurelia-bootstrapper</li>
+							<li>aurelia-metadata</li>
+							<li>aurelia-template-binding</li>
+							<li>...</li>
+
+						</ul>
+					</p>
 					</section>
 
 					<section>
