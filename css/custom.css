@@ -125,7 +125,8 @@
   color: #cd230f;
 }
 
-.angular-compare-db pre {
+.angular-compare-db pre,
+.angular-compare-db-code pre {
   width: 100%;
 }
 
@@ -150,22 +151,21 @@
   text-align: center;
 }
 
+.dom-manipulation h2,
 .angular-compare-db h2,
 .angular-compare-db-code h2 {
   font-size: 1.4em;
   margin-bottom: 0;
 }
 
+.dom-manipulation table th,
 .angular-compare-db table th,
 .angular-compare-db-code table th {
   padding-bottom: 0;
 }
 
-/*.angular-compare-db section img,
-.angular-compare-db-code section img {
-  height: 80px;
-}*/
-
+.dom-manipulation section img,
+.dom-manipulation section img,
 .angular-compare-db section img,
 .angular-compare-db-code section img,
 .angular-compare-summary section img {
@@ -176,16 +176,11 @@
   height: 80px;
 }
 
+.dom-manipulation table th,
 .angular-compare-db table th,
 .angular-compare-db-code table th,
 .angular-compare-summary table th {
   border-bottom: none;
-}
-
-.dom-manipulation tr th {
-  text-transform: uppercase;
-  color: #cd230f;
-  font-style: italic;
 }
 
 .scope-parent .pen-wrapper {
