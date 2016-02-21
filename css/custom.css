@@ -58,7 +58,11 @@
 }
 
 .dependency-injection p {
-  text-align: left;
+  text-align: center;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.2em;
+  color: #cd230f;
 }
 
 .dependency-injection table {
