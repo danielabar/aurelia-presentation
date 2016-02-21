@@ -74,7 +74,6 @@
 .dom-manipulation table td,
 .angular-compare-summary table td,
 .angular-compare-db table td,
-.angular-compare-db-code table t,
 .angular-compare-db-code table td,
 .just-es table td {
   border-bottom: none;
@@ -106,6 +105,11 @@
 .just-es .fragment p {
   margin-left: 5%;
   text-align: left;
+}
+
+.angular-compare-db table {
+  margin-left: -15%;
+  margin-right: -15%;
 }
 
 .angular-compare-db-code table {
@@ -152,6 +156,7 @@
   font-style: italic;
 }
 
+.angular-compare-db table th,
 .angular-compare-db-code table th {
   text-align: center;
 }
