@@ -82,6 +82,7 @@
 
 .dependency-injection table td code {
   color: #cd230f;
+  font-weight: bold;
 }
 
 .di-aurelia table {
