@@ -331,7 +331,7 @@ wm.set(obj, 42); // store some metadata about obj.
 					<section>
 						<h2>Native <code>Promise</code>s</h2>
 						<pre class="presentation-code fragment"><code class="hljs" data-trim>
-const p = new Promise(function(resolve, reject) {
+const p = new Promise((resolve, reject) => {
 	setTimeout(() => {
 		Math.random() < 0.5 ? resolve() : reject();
 	}, 500);
