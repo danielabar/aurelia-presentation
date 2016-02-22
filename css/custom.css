@@ -196,3 +196,27 @@
 .scope-parent .pen-wrapper {
   margin-bottom: 180px; /* hack to make page content move up to top */
 }
+
+.react-showdown {
+  height: 50%;
+  margin: 0 auto !important;
+  width: 80%;
+}
+
+.react-showdown:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.react-showdown .sean {
+  display: block;
+  float: left;
+  height: 100%;
+}
+
+.react-showdown .mike {
+  display: block;
+  float: right;
+  height: 100%;
+}
