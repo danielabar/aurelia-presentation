@@ -1255,16 +1255,51 @@ export class ChildViewModel {
 				<section>
 					<section>
 						<h2>Aurelia vs React</h2>
-						<p>
-							Placeholder
-						</p>
+                    </section>
+                    <section>
+                        <div class="react-showdown">
+                            <div class="sean">It's not JavaScript!</div>
+                            <div class="mike">It's just JavaScript!</div>
+                        </div>
 					</section>
 					<section>
 						<h2>JSX</h2>
-						<p>
-							Placeholder
-						</p>
+                        <pre class="fragment presentation-code"><code class="jsx" data-trim>
+var WelcomeBox = React.createClass({
+  render: function() {
+    return (
+      <div className="well">
+        Hello, {this.props.username}!
+      </div>
+    );
+  }
+});
+ReactDOM.render(
+  <WelcomeBox username="Hodor" />,
+  document.getElementById('welcome')
+);
+                        </code></pre>
 					</section>
+                    <section>
+                        <h2>Flux: Unidirectional Data Flow</h2>
+                        <img src="images/flux.png" alt="Flux">
+                    </section>
+                    <section>
+                        <h2>Redux: Three Principles</h2>
+                        <ul>
+                            <li>Single source of truth</li>
+                            <li>State is read-only</li>
+                            <li>Changes are made with pure functions</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Data Flow in Aurelia: Some Thoughts</h2>
+                        <ul>
+                            <li>One-way binding apart from input elements</li>
+                            <li>State is updated by calling methods on services</li>
+                            <li>Changes flow down via observers</li>
+                        </ul>
+                    </section>
 				</section>
 				<!-- END Kent: Aurelia vs React -->
 
