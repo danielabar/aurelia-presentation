@@ -549,7 +549,7 @@ script.next().value.then((r) => {
 					</section>
 					<section>
 						<h2>Javascript</h2>
-						<p>
+						<p class="fragment">
 							Just Javascript...
 						</p>
 					</section>
@@ -562,11 +562,89 @@ script.next().value.then((r) => {
 								<li>Enhances Web Components</li>
 							</ul>
 						</p>
+
+						<img width="80%" height="auto" class="fragment" data-src="images/happiness.gif" alt="Aurelia Logo"
+							style="border: none; background: none; box-shadow: none;">
+					</section>
+
+					<section>
+						<h2>ES6 / ES7</h2>
+						<small>What Sean said... (a couple of examples)</small>
+						<p>
+							<h3>
+								Modules and Decorators
+							</h3>
+							<pre class="presentation-code">
+								<code>
+import { inject, bindable } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
+import { UsersService, RolesService } from 'auth-services';
+import { User } from 'auth-models';
+
+@inject(UsersService, RolesService, Router)
+export class UsersFormView {
+	...
+}
+								</code>
+							</pre>
+						</p>
+					</section>
+
+					<section>
+						<h2>Web Components</h2>
+						<p>
+							<span>Follows Web Component Standards for:</span>
+							<ul>
+								<li><a href="https://www.w3.org/TR/html5/scripting-1.html#the-template-element">Uses HTML5 Template</a></li>
+								<li>Scoped CSS</li>
+								<li>Components as Modules</li>
+							</ul>
+						</p>
+					</section>
+
+
+					<section>
+						<h2>Web Components...</h2>
+						<small>What does Aurelia add?</small>
+						<p>
+							<span>Added support for javascript enabled behavior</span>
+							<ul>
+								<li>Simple binding behaviours in templates</li>
+								<li>Managed Component Lifecycle
+									<ul>
+										<li>Contructor</li>
+										<li>Created</li>
+										<li>Bind</li>
+										<li>Attached</li>
+										<li>Detached</li>
+										<li>Unbind</li>
+									</ul>
+								</li>
+								<li>Components as Modules!</li>
+
+							</ul>
+						</p>
 					</section>
 
 					<section>
 						<h2>Zero External Dependencies</h2>
 						<small>* exluding polyfills</small>
+						<p>
+						<ul class="fragment">
+							<li>aurelia-framework</li>
+							<li>aurelia-router</li>
+							<li>aurelia-fetch-client</li>
+							<li>aurelia-history</li>
+							<li>aurelia-logging</li>
+							<li>aurelia-logging-console</li>
+							<li>aurelia-animator-css</li>
+							<li>aurelia-bootstrapper</li>
+							<li>aurelia-metadata</li>
+							<li>aurelia-template-binding</li>
+							<li>...</li>
+
+						</ul>
+					</p>
 					</section>
 
 					<section>
@@ -641,7 +719,7 @@ script.next().value.then((r) => {
 					</section>
 
 					<section data-state="just-es">
-						<h2>Aurelia: ES6</h2>
+						<h2>Aurelia: Just classes</h2>
 						<table>
 							<tr class="fragment">
 								<td>View Model<br>(Controller)</td>
@@ -722,6 +800,7 @@ angular.module('myApp').controller('UserController',
 		// ...
 });
 						</code></pre>
+						<p class="fragment">Where did the dependencies come from??</p>
 						<table>
 							<tr class="fragment">
 								<td><code>users</code></td>
@@ -758,7 +837,7 @@ import {EventAggregator} from
 import * as toastr from 'toastr';
 						</code></pre>
 						<div class=" hack-col-right">
-							<p>Dependencies imported</p>
+							<p>Injection service and dependencies imported.</p>
 						</div>
 						</div>
 						<!-- Second code snippet -->
@@ -775,9 +854,9 @@ export class Users {
 
 }
 						</code></pre>
-						<div class=" hack-col-right">
-							<p>Dependencies imported</p>
-							<p>Injection via decorator</p>
+						<div class="hack-col-right">
+							<p>Injection service and dependencies imported.</p>
+							<p>Injection via decorator.</p>
 						</div>
 						</div>
 						<!-- Third code snippet -->
@@ -799,10 +878,10 @@ export class Users {
 	}
 }
 						</code></pre>
-						<div class=" hack-col-right">
-							<p>Dependencies imported</p>
-							<p>Injection via decorator</p>
-							<p>Deps injected as constructor args</p>
+						<div class="hack-col-right">
+							<p>Injection service and dependencies imported.</p>
+							<p>Injection via decorator.</p>
+							<p>Deps injected as constructor args.</p>
 						</div>
 						</div>
 						<!-- Fourth code snippet -->
@@ -829,9 +908,9 @@ export class Users {
 }
 						</code></pre>
 						<div class="fragment hack-col-right">
-							<p>Dependencies imported</p>
-							<p>Injection via decorator</p>
-							<p>Deps injected as constructor args</p>
+							<p>Injection service and dependencies imported.</p>
+							<p>Injection via decorator.</p>
+							<p>Deps injected as constructor args.</p>
 							<p>
 								Lifecycle activate method invoked with view state.
 								<a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#the-screen-activation-lifecycle">Screen Activation Lifecycle</a>
@@ -839,14 +918,14 @@ export class Users {
 						</div>
 					</section>
 
-					<section data-state="angular-compare-summary">
+					<section data-state="angular-compare-db">
 						<h2>Data Binding</h2>
 						<table>
-							<col width="60%">
-  						<col width="40%">
+							<col width="50%">
+  						<col width="50%">
 							<tr>
-								<th>Aurelia</th>
-								<th>Angular</th>
+								<th><img src="images/aurelia-logo.png" alt="Aurelia logo"></th>
+								<th><img src="images/angular-logo-light.png" alt="Angular logo"></th>
 							</tr>
 							<tr class="fragment">
 								<td>Append <code>.bind</code> to any html or custom attribute</td>
@@ -861,18 +940,18 @@ export class Users {
 								<td>Each binding adds $watch to $watch list</td>
 							</tr>
 							<tr class="fragment">
-								<td><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> used to pick optimal observation strategy and minimize dirty checking</td>
+								<td><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> picks optimal observation strategy &amp; minimizes dirty checking</td>
 								<td>Changes trigger $digest cycle (dirty checking)</td>
 							</tr>
 						</table>
 					</section>
 
-					<section data-state="angular-db-compare">
+					<section data-state="angular-compare-db-code">
 						<h2>Data Binding Examples</h2>
 						<table>
 							<tr>
-								<th>Aurelia</th>
-								<th>Angular</th>
+								<th><img src="images/aurelia-logo.png" alt="Aurelia logo"></th>
+								<th><img src="images/angular-logo-light.png" alt="Angular logo"></th>
 							</tr>
 							<!-- Example 1: Input binding -->
 							<tr class="fragment">
@@ -898,7 +977,7 @@ export class Users {
 								</td>
 								<td>
 									<pre class="presentation-code"><code class="hljs" data-trim>
-<div ng-class="$even ? 'even-row' : 'odd-row'">
+<div ng-class="row.isActive ? 'active' : ''">
 	some content
 </div>
 									</code></pre>
@@ -943,8 +1022,8 @@ export class Users {
 						<h3>HMTL Customization</h3>
 							<table class="fragment">
 								<tr>
-									<th align="center">Aurelia</th>
-									<th align="center">Angular</th>
+									<th align="center"><img src="images/aurelia-logo.png" alt="Aurelia logo"></th>
+									<th align="center"><img src="images/angular-logo-light.png" alt="Angular logo"></th>
 								</tr>
 								<tr>
 									<td>

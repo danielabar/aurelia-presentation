@@ -58,7 +58,11 @@
 }
 
 .dependency-injection p {
-  text-align: left;
+  text-align: center;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.2em;
+  color: #cd230f;
 }
 
 .dependency-injection table {
@@ -69,13 +73,15 @@
 .dependency-injection table td,
 .dom-manipulation table td,
 .angular-compare-summary table td,
-.angular-db-compare table td,
+.angular-compare-db table td,
+.angular-compare-db-code table td,
 .just-es table td {
   border-bottom: none;
 }
 
 .dependency-injection table td code {
   color: #cd230f;
+  font-weight: bold;
 }
 
 .di-aurelia table {
@@ -101,11 +107,16 @@
   text-align: left;
 }
 
-.angular-db-compare table {
+.angular-compare-db table {
+  margin-left: -15%;
+  margin-right: -15%;
+}
+
+.angular-compare-db-code table {
   margin-left: -15%;
 }
 
-.angular-db-compare pre {
+.angular-compare-db-code pre {
   margin-left: 0;
 }
 
@@ -123,7 +134,8 @@
   color: #cd230f;
 }
 
-.angular-db-compare pre {
+.angular-compare-db pre,
+.angular-compare-db-code pre {
   width: 100%;
 }
 
@@ -144,23 +156,41 @@
   font-style: italic;
 }
 
+.angular-compare-db table th,
+.angular-compare-db-code table th {
+  text-align: center;
+}
+
+.dom-manipulation h2,
+.angular-compare-db h2,
+.angular-compare-db-code h2 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+}
+
+.dom-manipulation table th,
+.angular-compare-db table th,
+.angular-compare-db-code table th {
+  padding-bottom: 0;
+}
+
+.dom-manipulation section img,
+.dom-manipulation section img,
+.angular-compare-db section img,
+.angular-compare-db-code section img,
 .angular-compare-summary section img {
   border: none;
   background: none;
   box-shadow: none;
   width: 270px;
-  height: 90px;
+  height: 80px;
 }
 
+.dom-manipulation table th,
+.angular-compare-db table th,
+.angular-compare-db-code table th,
 .angular-compare-summary table th {
   border-bottom: none;
-}
-
-.angular-db-compare tr th,
-.dom-manipulation tr th {
-  text-transform: uppercase;
-  color: #cd230f;
-  font-style: italic;
 }
 
 .scope-parent .pen-wrapper {
