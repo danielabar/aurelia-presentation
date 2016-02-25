@@ -796,9 +796,10 @@ export class App {
 						<h2>Dependency Injection: Angular</h2>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 angular.module('myApp').controller('UserController',
-	function (users, UserService, $rootScope, toastr, $state) {
+'users', 'UserService', '$rootScope', 'toastr', '$state',
+[function (users, UserService, $rootScope, toastr, $state) {
 		// ...
-});
+}]);
 						</code></pre>
 						<p class="fragment">Where did the dependencies come from??</p>
 						<table>
@@ -1107,7 +1108,7 @@ link: function(scope, element) {
 }
 						</code></pre>
 						<div class="hack-col-right" style="top: 180%;">
-							<p class="fragment">Run update inside scope.$apply to trigger a digest cycle.</p>
+							<p class="fragment">Run update inside <code>scope.$apply</code> to trigger a digest cycle.</p>
 						</div>
 					</section>
 
@@ -1122,7 +1123,7 @@ link: function(scope, element) {
 }
 						</code></pre>
 						<div class="hack-col-right">
-							<p>To populate datepicker from model, use scope.$watch to add to list of watchers evaluated in digest cycle.</p>
+							<p>To populate datepicker from model, use <code>scope.$watch</code> to add to list of watchers evaluated in digest cycle.</p>
 						</div>
 					</section>
 
@@ -1209,13 +1210,12 @@ export class DatePicker {
 					<p class="fragment">Can be configured if needed:</p>
 					<pre class="fragment presentation-code"><code class="hljs" data-trim>
 export class ChildViewModel {
-
   bind(bindingContext) {
     this.$parent = bindingContext;
   }
-
 }
 					</code></pre>
+					<p class="fragment">Even better, use <code>EventAggregator</code> or <code>PropertyObserver</code> for component communication.</p>
 				</section>
 
 				<section data-state="angular-compare-summary">

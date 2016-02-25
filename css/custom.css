@@ -156,6 +156,13 @@
   font-style: italic;
 }
 
+.ang-dir p code,
+.angular-compare-db code,
+.scope-parent p code {
+  color: #cc9393;
+  font-style: normal;
+}
+
 .angular-compare-db table th,
 .angular-compare-db-code table th {
   text-align: center;
