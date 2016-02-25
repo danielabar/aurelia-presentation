@@ -1,5 +1,5 @@
 /* ---------------------------------- */
-/* Accent: #cd230f                    */
+/* Accent: red                    */
 /* ---------------------------------- */
 
 
@@ -13,7 +13,7 @@
   height: 1.5em;
   margin: 5px !important;
   padding: 5px !important;
-  border: 3px solid #cd230f !important;
+  border: 3px solid red !important;
   border-radius: 3px !important;
   background: #5A5859 !important;
   font-family: monospace !important;
@@ -41,7 +41,7 @@
 /* ---------------------------------- */
 
 .subsection-start h2 {
-  color: #cd230f;
+  color: red;
   font-size: 2em;
 }
 
@@ -62,7 +62,7 @@
   font-style: italic;
   font-weight: bolder;
   font-size: 1.2em;
-  color: #cd230f;
+  color: red;
 }
 
 .dependency-injection table {
@@ -80,7 +80,7 @@
 }
 
 .dependency-injection table td code {
-  color: #cd230f;
+  color: red;
   font-weight: bold;
 }
 
@@ -131,7 +131,7 @@
 .ang-dir .emphasis,
 .scope-parent .emphasis {
   font-style: italic;
-  color: #cd230f;
+  color: red;
 }
 
 .angular-compare-db pre,
@@ -159,8 +159,14 @@
 .ang-dir p code,
 .angular-compare-db code,
 .scope-parent p code {
+  display: inline-block;
+  padding-left: 2px;
+  padding-right: 2px;
+  background: rgb(63, 63, 63);
   color: #cc9393;
   font-style: normal;
+  border: 1px solid transparent;
+  border-radius: 3px;
 }
 
 .angular-compare-db table th,
