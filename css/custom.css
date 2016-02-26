@@ -50,7 +50,13 @@
 }
 
 .just-es td {
-    vertical-align: middle;
+  vertical-align: middle;
+}
+
+.just-es td.message-emphasis {
+  /*vertical-align: top;*/
+  color: red;
+  font-style: italic;;
 }
 
 .just-es pre code {
@@ -107,6 +113,7 @@
   text-align: left;
 }
 
+.just-es table,
 .angular-compare-db table {
   margin-left: -15%;
   margin-right: -15%;
