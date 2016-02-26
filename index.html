@@ -938,11 +938,11 @@ export class Users {
 							</tr>
 							<tr class="fragment">
 								<td>Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code>.</td>
-								<td>Each binding adds $watch to $watch list.</td>
+								<td>Each binding adds a watcher on the <code>scope</code> model.</td>
 							</tr>
 							<tr class="fragment">
 								<td><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> picks optimal observation strategy &amp; minimizes dirty checking.</td>
-								<td>Changes trigger $digest cycle (dirty checking).</td>
+								<td>Built in directives trigger digest cycle on scope model changes (dirty checking).</td>
 							</tr>
 						</table>
 					</section>
