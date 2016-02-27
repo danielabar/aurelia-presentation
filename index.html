@@ -1096,10 +1096,10 @@ link: function(scope, element) {
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// Initialize datepicker
-	element.find('.date').datepicker();
+	element.datepicker();
 
 	// Update data binding
-	element.find('.date').datepicker().on('changeDate',
+	element.datepicker().on('changeDate',
 		function(e) {
 			scope.$apply(function () {
 				scope.data = e.date;
@@ -1116,12 +1116,12 @@ link: function(scope, element) {
 						<h2>Directive: Watch</h2>
 						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
-
+	// ...
 	scope.$watch('data',
 		function(newVal) {
-    	$('input').datepicker('setDate', newVal);
+    	element.datepicker('setDate', newVal);
   	});
-		
+
 }
 						</code></pre>
 						<div class="hack-col-right">
