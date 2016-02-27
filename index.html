@@ -936,7 +936,7 @@ export class Users {
 							</tr>
 							<tr class="fragment">
 								<td>Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code>.</td>
-								<td>Each binding adds a watcher on the <code>scope</code> model.</td>
+								<td>Each binding adds a watcher on the <code>$scope</code> model.</td>
 							</tr>
 							<tr class="fragment">
 								<td><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> picks optimal observation strategy &amp; minimizes dirty checking.</td>
@@ -1080,10 +1080,10 @@ angular.module('myApp').directive('myDatepicker',
 						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// Initialize datepicker
-	$('input').datepicker();
+	element.find('.date').datepicker();
 
 	// Try to update data binding?
-	$('input').datepicker().on('changeDate',
+	element.find('.date').datepicker().on('changeDate',
 		function(e) {
 			scope.data = e.date;
 		}
@@ -1096,10 +1096,10 @@ link: function(scope, element) {
 						<pre class="fragment presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// Initialize datepicker
-	$('input').datepicker();
+	element.find('.date').datepicker();
 
 	// Update data binding
-	$('input').datepicker().on('changeDate',
+	element.find('.date').datepicker().on('changeDate',
 		function(e) {
 			scope.$apply(function () {
 				scope.data = e.date;
@@ -1116,10 +1116,12 @@ link: function(scope, element) {
 						<h2>Directive: Watch</h2>
 						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
+
 	scope.$watch('data',
 		function(newVal) {
     	$('input').datepicker('setDate', newVal);
   	});
+		
 }
 						</code></pre>
 						<div class="hack-col-right">
@@ -1162,7 +1164,7 @@ bind() {
 	// Initialize datepicker
 	this.selector.datepicker();
 
-	// Update bound data on selection
+	// Update when user picks a date
 	this.selector.datepicker().on('changeDate', (e) => {
 		this.data = e.date;
 	});
@@ -1179,6 +1181,8 @@ bind() {
 					<h2>Custom Element: Update</h2>
 					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 export class DatePicker {
+	@bindable data;
+	...
 
 	dataChanged(newVal, oldVal) {
 		this.selector.datepicker('setDate', this.data);
