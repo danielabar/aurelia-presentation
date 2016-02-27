@@ -1133,7 +1133,7 @@ link: function(scope, element) {
 					<h2>Aurelia Custom Element</h2>
 					<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 import {inject, bindable} from 'aurelia-framework';
-import 'bootstrap-datepicker/dist/js/bootstrap-datepicker';
+import 'bootstrap-datepicker/js/bootstrap-datepicker';
 
 @inject(Element)
 export class MyDatepickerCustomElement {
@@ -1147,9 +1147,10 @@ export class MyDatepickerCustomElement {
 }
 					</code></pre>
 					<div class="hack-col-right">
+						<p class="fragment">External libraries are imported.</p>
 						<p class="fragment">Naming convention marks this as custom element.</p>
 						<p class="fragment">Bindable decorator for data binding.</p>
-						<p class="fragment">View template loaded by convention.</p>
+						<p class="fragment">View template loaded by convention</p>
 						<p class="fragment"><code>bind</code> and <code>unbind</code> are <a href="http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.1.1/doc/article/creating-components/3">Component Lifecycle</a> methods.</p>
 					</div>
 				</section>
