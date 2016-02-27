@@ -561,7 +561,7 @@ script.next().value.then((r) => {
 							ES6, Web Components and all the good stuff
 						</p>
 					</section>
-					
+
 					<section>
 						<h2>Javascript</h2>
 						<p class="fragment">
@@ -793,8 +793,8 @@ export class App {
 						<h2>Dependency Injection: Angular</h2>
 						<pre class="fragment presentation-code"><code class="hljs" data-trim>
 angular.module('myApp').controller('UserController',
-'users', 'UserService', '$rootScope', 'toastr', '$state',
-[function (users, UserService, $rootScope, toastr, $state) {
+['users', 'UserService', '$rootScope', 'toastr', '$state',
+function (users, UserService, $rootScope, toastr, $state) {
 		// ...
 }]);
 						</code></pre>
