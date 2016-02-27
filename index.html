@@ -932,7 +932,7 @@ export class Users {
 							</tr>
 							<tr class="fragment">
 								<td>Defaults to two-way for input, one-way for everything else.</td>
-								<td>Two-way all the time.</td>
+								<td>Two-way all the time, except for custom directives.</td>
 							</tr>
 							<tr class="fragment">
 								<td>Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code>.</td>
@@ -1053,11 +1053,13 @@ angular.module('myApp').directive('myDatepicker',
 	function () {
     return {
       templateUrl: 'views/mydatepicker.html',
-      restrict: 'E',
-      scope: { data: '=' },
+			restrict: 'E',
+			scope: { data: '=' },
+
 			controller: function($scope, $element) {
 				// Directive-specific logic
 			},
+
       link: function postLink(scope, element) {
         // DOM manipulation here
       }
@@ -1065,11 +1067,11 @@ angular.module('myApp').directive('myDatepicker',
   });
 						</code></pre>
 						<div class="hack-col-right">
-							<p class="fragment">Configure template</p>
-							<p class="fragment">Isolate scope (o.w. can access parent!)</p>
-							<p class="fragment">Controller function runs first</p>
-							<p class="fragment">Link function runs last</p>
-							<p class="fragment"><a href="http://odetocode.com/blogs/scott/archive/2014/05/28/compile-pre-and-post-linking-in-angularjs.aspx">Directive Lifecycle</a></p>
+							<p class="fragment">Configure template.</p>
+							<p class="fragment"><code>restrict</code>&nbsp;&nbsp;specifies 'E' or 'A' for element or attribute.</p>
+							<p class="fragment">Isolate scope, o.w. can access parent!</p>
+							<p class="fragment">'=' indicates two-way data binding, '@' for one way, '&' for binding functions.</p>
+							<p class="fragment">Controller function runs first, then Link function.</p>
 						</div>
 					</section>
 
