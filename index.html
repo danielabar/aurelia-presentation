@@ -694,7 +694,7 @@ export class UsersFormView {
 						<h2>Similarities</h2>
 						<ul>
 							<li class="fragment">Make SPA development easier</li>
-							<li class="fragment">Routing and deep linking to any view</li>
+							<li class="fragment">Routing and deep linking</li>
 							<li class="fragment">Data binding</li>
 							<li class="fragment">HTML customization</li>
 						</ul>
@@ -1117,6 +1117,7 @@ link: function(scope, element) {
 						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// ...
+	
 	scope.$watch('data',
 		function(newVal) {
     	element.datepicker('setDate', newVal);
@@ -1125,7 +1126,7 @@ link: function(scope, element) {
 }
 						</code></pre>
 						<div class="hack-col-right">
-							<p>To populate datepicker from model, use <code>scope.$watch</code> to add to list of watchers evaluated in digest cycle.</p>
+							<p>To have datepicker respond to model changes, must add <code>scope.$watch</code> to add to list of watchers evaluated in digest cycle.</p>
 						</div>
 					</section>
 
