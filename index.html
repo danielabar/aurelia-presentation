@@ -48,18 +48,77 @@
 						<img width="573" height="170" data-src="images/aurelia-logo.png" alt="Aurelia Logo"
 							style="border: none; background: none; box-shadow: none;">
 					</a>
-					<h3>A JavaScript Client Framework</h3>
+					<h4>A JavaScript Client Framework</h4>
+					<h2>And Why You Should Care</h2>
 					<p>
 						<small>Presented by:
 						<ul>
-							<li><a href="https://github.com/mlaccetti">Michael Laccetti</a></li>
-							<li><a href="https://github.com/Ghnuberath">Sean McIntyre</a></li>
-							<li><a href="https://github.com/plaliberte">Phil Laliberte</a></li>
 							<li><a href="https://github.com/danielabar">Daniela Baron</a></li>
 							<li><a href="https://github.com/zeroviscosity">Kent English</a></li>
+							<li><a href="https://github.com/plaliberte">Phil Laliberte</a></li>
+							<li><a href="https://github.com/mlaccetti">Michael Laccetti</a></li>
+							<li><a href="https://github.com/Ghnuberath">Sean McIntyre</a></li>
 						</ul>
 						</small>
 					</p>
+				</section>
+
+				<!-- BEGIN Michael: what the hell is this about, even -->
+				<section>
+					<section>
+						<h2>What is this about, even?</h2>
+						<p class="fragment">
+							Seriously, do we really need to talk about another framework?
+						</p>
+					</section>
+					<section>
+						<h2>Yep</h2>
+						<p class="fragment">
+							Times change, needs change, technolgy evolves
+						</p>
+					</section>
+					<section>
+						<h2>Why Aurelia, though?</h2>
+						<ul>
+							<li class="fragment">
+								Influent 3 planning was happening, and we were shopping for a framework
+							</li>
+							<li class="fragment">
+								TellFinder 2 came along at an auspicious time
+							</li>
+							<li class="fragment">
+								Even got QCR to drink the koolaid!
+							</li>
+							<li class="fragment">
+								We needed to build complex shared components across applications (auth, case management)
+							</li>
+						</p>
+					</section>
+					<section>
+						<h2>We want to share our experiences</h2>
+						<ul>
+							<li class="fragment">
+								Did a bunch of research into different frameworks
+							</li>
+							<li class="fragment">
+								Have used Aurelia for a few months now, and have a feel for the good/bad
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>So really, why Aurelia</h2>
+						<ul>
+							<li class="fragment">
+								Uses ES2015/2016, ensuring that we are building apps that won't be outdated in a year (or less)
+							</li>
+							<li class="fragment">
+								It's *JUST* JavaScript - no JSX, no extending framework classes
+							</li>
+							<li class="fragment">
+								Beat feature - we aren't locked in
+							</li>
+						</ul>
+					</section>
 				</section>
 
 				<!-- BEGIN Sean: ES2015 Overview -->
@@ -583,14 +642,14 @@ script.next().value.then((r) => {
 
 					<section data-state="compete">
 						<p class="david">
-							<img src="images/durandal-logo.png" alt="Durandal logo"> <img src="images/aurelia-logo.png" alt="Aurelia logo">	
+							<img src="images/durandal-logo.png" alt="Durandal logo"> <img src="images/aurelia-logo.png" alt="Aurelia logo">
 						</p>
 						<h2 class="fragment">How can it compete?</h2>
 						<div class="goliath fragment">
-							<img src="images/facebook-logo.png" alt="Facebook logo"> <img src="images/react-logo.svg" alt="React logo">	
+							<img src="images/facebook-logo.png" alt="Facebook logo"> <img src="images/react-logo.svg" alt="React logo">
 						</div>
 						<div class="goliath fragment">
-							<img src="images/google-logo.png" alt="Google logo"> <img src="images/angular-logo-light.png" alt="angular logo">	
+							<img src="images/google-logo.png" alt="Google logo"> <img src="images/angular-logo-light.png" alt="angular logo">
 						</div>
 					</section>
 				</section>
@@ -1029,7 +1088,7 @@ link: function(scope, element) {
 						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
 link: function(scope, element) {
 	// ...
-	
+
 	scope.$watch('data',
 		function(newVal) {
     	element.datepicker('setDate', newVal);
@@ -1224,15 +1283,58 @@ ReactDOM.render(
 				<!-- BEGIN Mike: Aurelia vs Ember -->
 				<section>
 					<section>
-						<h2>Aurelia vs Ember</h2>
+						<h2>Aurelia vs. Ember</h2>
 						<p>
-							The Ember Way
+							Conceptually, they support the same ideas:
+						</p>
+						<ul>
+							<li class="fragment">
+								Dependency injection
+							</li>
+							<li>
+								Routing
+							</li>
+							<li class="fragment">
+								Components
+							</li>
+							<li class="fragment">
+								Templating
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Ember-isms</h2>
+						<p>
+							Using Ember means using Ember:
+						</p>
+						<ul>
+							<li class="fragment">
+								 Using the CLI (not a bad thing, but a thing nonetheless)
+							</li>
+							<li class="fragment">
+								Extending Ember objects
+							</li>
+							<li class="fragment">
+								Using Handlebars for templates
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Routing</h2>
+						<p>
+
 						</p>
 					</section>
 					<section>
-						<h2>Router</h2>
+						<h2>Components</h2>
 						<p>
-							different...
+
+						</p>
+					</section>
+					<section>
+						<h2>Templates</h2>
+						<p>
+
 						</p>
 					</section>
 				</section>
