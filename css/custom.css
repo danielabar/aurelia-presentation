@@ -253,3 +253,14 @@
   float: right;
   height: 100%;
 }
+
+.compete img {
+  border: none !important;
+  background-color: rgba(0,0,0,0) !important;
+  box-shadow: none !important;
+  height: 75px;
+}
+
+.compete .goliath img {
+  height: 125px;
+}

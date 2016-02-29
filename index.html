@@ -542,39 +542,38 @@ script.next().value.then((r) => {
 				<!-- BEGIN Phil: Aurelia Overview -->
 				<section>
 					<section>
-						<h2>Aurelia Overview</h2>
-						<p>
-							What is it?
-						</p>
+						<h2>What is it?</h2>
+						<h2>Why should you care?</h2>
 					</section>
 
 					<section>
-						<h2>Why you should care</h2>
-						<p>
-							ES6, Web Components, etc.
-						</p>
-					</section>
-
-					<section>
-						<h2>Standards</h2>
-						<p>
-							ES6, Web Components and all the good stuff
-						</p>
-					</section>
-
-					<section>
-						<h2>Javascript</h2>
-						<p class="fragment">
-							Just Javascript...
-						</p>
-					</section>
-
-					<section>
-						<h2>Web Standards of the Future</h2>
+						<h2>Modern</h2>
 						<p>
 							<ul>
-								<li>ES6 / ES7</li>
-								<li>Enhances Web Components</li>
+								<li class="fragment">
+									<div>Modern javascript</div>
+									<small>Write in ES6, ES7, Typescript... or ES5</small>
+								</li>
+								<li class="fragment">
+									<div>Modern DOM</div>
+									<small>Automatically polyfills older browser support</small>
+								</li>
+								<li class="fragment">
+									<div>Modern Tooling</div>
+									<small><em class="fragment">*</em>JSPM, Gulp, Karma, Protractor</small>
+								</li>
+							</ul>
+						</p>
+						<p class="fragment"><em>* Presenter does not officially endorse JSPM</em></p>
+					</section>
+
+					<section>
+						<h2>Components!</h2>
+						<p>
+							<ul>
+								<li>HTMLTemplateElement and ShadowDOM</li>
+								<li>Aurelia Component Lifecycle</li>
+								<li>Modularity</li>
 							</ul>
 						</p>
 
@@ -582,104 +581,17 @@ script.next().value.then((r) => {
 							style="border: none; background: none; box-shadow: none;">
 					</section>
 
-					<section>
-						<h2>ES6 / ES7</h2>
-						<small>What Sean said... (a couple of examples)</small>
-						<p>
-							<h3>
-								Modules and Decorators
-							</h3>
-							<pre class="presentation-code">
-								<code>
-import { inject, bindable } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
-import { UsersService, RolesService } from 'auth-services';
-import { User } from 'auth-models';
-
-@inject(UsersService, RolesService, Router)
-export class UsersFormView {
-	...
-}
-								</code>
-							</pre>
+					<section data-state="compete">
+						<p class="david">
+							<img src="images/durandal-logo.png" alt="Durandal logo"> <img src="images/aurelia-logo.png" alt="Aurelia logo">	
 						</p>
-					</section>
-
-					<section>
-						<h2>Web Components</h2>
-						<p>
-							<span>Follows Web Component Standards for:</span>
-							<ul>
-								<li><a href="https://www.w3.org/TR/html5/scripting-1.html#the-template-element">Uses HTML5 Template</a></li>
-								<li>Scoped CSS</li>
-								<li>Components as Modules</li>
-							</ul>
-						</p>
-					</section>
-
-
-					<section>
-						<h2>Web Components...</h2>
-						<small>What does Aurelia add?</small>
-						<p>
-							<span>Added support for javascript enabled behavior</span>
-							<ul>
-								<li>Simple binding behaviours in templates</li>
-								<li>Managed Component Lifecycle
-									<ul>
-										<li>Contructor</li>
-										<li>Created</li>
-										<li>Bind</li>
-										<li>Attached</li>
-										<li>Detached</li>
-										<li>Unbind</li>
-									</ul>
-								</li>
-								<li>Components as Modules!</li>
-
-							</ul>
-						</p>
-					</section>
-
-					<section>
-						<h2>Zero External Dependencies</h2>
-						<small>* exluding polyfills</small>
-						<p>
-						<ul class="fragment">
-							<li>aurelia-framework</li>
-							<li>aurelia-router</li>
-							<li>aurelia-fetch-client</li>
-							<li>aurelia-history</li>
-							<li>aurelia-logging</li>
-							<li>aurelia-logging-console</li>
-							<li>aurelia-animator-css</li>
-							<li>aurelia-bootstrapper</li>
-							<li>aurelia-metadata</li>
-							<li>aurelia-template-binding</li>
-							<li>...</li>
-
-						</ul>
-					</p>
-					</section>
-
-					<section>
-						<h2>
-							Convention
-						</h2>
-						<hr />
-						<h2>
-							Configuration
-						</h2>
-					</section>
-
-					<section>
-						<h2>
-							Modularity
-						</h2>
-						<p>
-							Dependency Injection that just works
-						</p>
-						<small>* but not magically</small>
+						<h2 class="fragment">How can it compete?</h2>
+						<div class="goliath fragment">
+							<img src="images/facebook-logo.png" alt="Facebook logo"> <img src="images/react-logo.svg" alt="React logo">	
+						</div>
+						<div class="goliath fragment">
+							<img src="images/google-logo.png" alt="Google logo"> <img src="images/angular-logo-light.png" alt="angular logo">	
+						</div>
 					</section>
 				</section>
 				<!-- END Phil: Aurelia Overview -->
