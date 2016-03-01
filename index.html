@@ -1285,51 +1285,171 @@ ReactDOM.render(
 					<section>
 						<h2>Aurelia vs. Ember</h2>
 						<p>
-							Conceptually, they support the same ideas:
+							Same goals, different approach.
 						</p>
-						<ul>
-							<li class="fragment">
-								Dependency injection
-							</li>
-							<li>
-								Routing
-							</li>
-							<li class="fragment">
-								Components
-							</li>
-							<li class="fragment">
-								Templating
-							</li>
-						</ul>
+						<aside class="notes">
+							<p>
+								Conceptually, they support the same ideas/goals:
+							</p>
+							<ul>
+								<li>
+									Dependency injection
+								</li>
+								<li>
+									Routing
+								</li>
+								<li>
+									Components
+								</li>
+								<li>
+									Templating
+								</li>
+							</ul>
+							<p>
+								Aurelia has the advantage that it doesn't have any "legacy" versions to support, and no backwards compatibility to worry about.  It was designed up-front to use ES6, instead of migrating to ES6 over time.
+							</p>
+						</aside>
 					</section>
 					<section>
 						<h2>Ember-isms</h2>
 						<p>
-							Using Ember means using Ember:
+							Using Ember means using Ember.
 						</p>
-						<ul>
-							<li class="fragment">
-								 Using the CLI (not a bad thing, but a thing nonetheless)
-							</li>
-							<li class="fragment">
-								Extending Ember objects
-							</li>
-							<li class="fragment">
-								Using Handlebars for templates
-							</li>
-						</ul>
+						<aside class="notes">
+							<p>
+								Much like Angular or React, when you use Ember, you are forever using Ember.  There is no easy way to switch to another framework, since you are consuming/extending very specific Ember items.
+							</p>
+							<p>
+								Things to remember when using Ember:
+							</p>
+							<ul>
+								<li>
+									 Start using the CLI, to help with adding functionality (not a bad thing, but a thing nonetheless)
+								</li>
+								<li>
+									Using Handlebars for templates (and templates live in a different folder from their source code)
+								</li>
+							</ul>
+							<p>Oh, and that whole "if you use Ember 1.x you get a different experience from using Ember 2.x" thing. ES6 goodies only come into play with Ember 2.x.</p>
+						</aside>
 					</section>
 					<section>
-						<h2>Routing</h2>
-						<p>
-
-						</p>
+						<h2>Let's talk routing</h2>
+						<img width="80%" height="auto" data-src="images/routing.jpg" alt="Routing"
+							style="border: none; background: none; box-shadow: none;">
 					</section>
 					<section>
-						<h2>Components</h2>
-						<p>
+						<h2>Routing (in Ember/ES5)</h2>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+Todos.Router.map(function () {
+	this.resource('todos', { path: '/' }, function () {
+		this.route('active');
+		this.route('completed');
+	});
+});
 
+Todos.TodosRoute = Ember.Route.extend({
+	model: function () {
+		return this.store.find('todo');
+	}
+});
+
+Todos.TodosIndexRoute = Todos.TodosRoute.extend({
+	templateName: 'todo-list',
+	controllerName: 'todos-list'
+});
+
+Todos.TodosActiveRoute = Todos.TodosIndexRoute.extend({
+	⋮
+});
+
+Todos.TodosCompletedRoute = Todos.TodosIndexRoute.extend({
+	⋮
+});
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Routing (in Ember/ES6)</h2>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+import Ember from 'ember';
+import config from './config/environment';
+
+var Router = Ember.Router.extend({
+  location: config.locationType
+});
+
+Router.map(function() {
+  this.route('about');
+  this.route('contact');
+  this.route('rental', {path: '/rental/:rental_id'});
+  this.route('city', {path: '/city/:city_id'});
+});
+
+export default Router;
+						</code></pre>
+						<aside section="notes">
+							<p>ES6 makes Ember nicer, but still lots of verbocity.</p>
+							<p>Each route has a separate module under <code>/routes/</code> where more code lives.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Routing (in Aurelia)</h2>
+						<div class="fragment">
+						<pre class="presentation-code"><code class="hljs" data-trim>
+export class App {
+	constructor() {
+		// whatever you want
+	}
+
+	configureRoutes(config, router) {
+		this.router = router; // if you want to reference it
+													// in other phases of the lifecycle
+
+		config.title = 'TodoMVC';
+		config.map([
+			{ route: ['', ':filter'], moduleId: 'todos' }
+		]);
+	}
+}
+						</code></pre>
+						</div>
+						<aside section="notes">
+							<p>Routes typically wired in as part of the app initialization.</p>
+							<p>The route's <code>moduleId</code> references an ES6 class.</p>
+						</aside>
+					</section>
+					<section>
+						<h2>Components (in Ember)</h2>
+						<p>
+							<img width="50%" height="auto" data-src="images/ember-component-lifecycle.png" alt="Routing"
+								style="border: none; background: none; box-shadow: none;">
 						</p>
+						<h1>THIS.</h1>
+					</section>
+					<section>
+						<h2>Components (in Aurelia)</h2>
+						<p>
+In Aurlia, the router invokes a component, and renders a view:
+						</p>
+						<pre class="fragment presentation-code"><code class="hljs" data-trim>
+JS:
+export class HomeView {
+  constructor() {
+  }
+}
+
+HTML:
+<template>
+  <div class="well well-lg">
+    Welcome to TellFinder 2.0!
+  </div>
+</template>
+						</code></pre>
+					</section>
+					<section>
+						<h2>Components (in Ember)</h2>
+
 					</section>
 					<section>
 						<h2>Templates</h2>
