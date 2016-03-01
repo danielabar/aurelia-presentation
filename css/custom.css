@@ -1,5 +1,6 @@
 /* ---------------------------------- */
-/* Accent: red                    */
+/* Accent pink: #cc9393               */
+/* Accent gold: #efdcbc               */
 /* ---------------------------------- */
 
 
@@ -54,7 +55,7 @@
 }
 
 .just-es td.message-emphasis {
-  color: red;
+  color: #cc9393;
   font-style: italic;
   font-size: 1.3em;
   font-weight: bold;
@@ -69,7 +70,7 @@
   font-style: italic;
   font-weight: bolder;
   font-size: 1.2em;
-  color: red;
+  color: #efdcbc;
 }
 
 .dependency-injection table {
@@ -87,7 +88,7 @@
 }
 
 .dependency-injection table td code {
-  color: red;
+  color: #cc9393;
   font-weight: bold;
 }
 
@@ -150,8 +151,12 @@
 .ang-dir .emphasis,
 .scope-parent .emphasis {
   font-style: italic;
-  color: red;
+  color: #cc9393;
   font-weight: bolder;
+}
+
+.ang-dir .emphasis-alternate {
+  color: #efdcbc;
 }
 
 .angular-compare-db pre,
