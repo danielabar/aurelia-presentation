@@ -774,16 +774,7 @@ export class MyService {
 								</td>
 							</tr>
 							<tr class="fragment">
-								<td>Value Converter<br>(Filter)</td>
-								<td>
-									<pre class="presentation-code"><code class="hljs" data-trim>
-export class MyValueConverter {
-	constructor() { ... }
-	toView(value) { ... }
-}
-									</code></pre>
-								</td>
-								<td colspan="2" class="message-emphasis">No framework specific code required!</td>
+								<td colspan="4" class="message-emphasis">No framework specific code required!</td>
 							</tr>
 						</table>
 					</section>
@@ -960,21 +951,21 @@ export class Users {
 								<th><img src="images/aurelia-logo.png" alt="Aurelia logo"></th>
 								<th><img src="images/angular-logo-light.png" alt="Angular logo"></th>
 							</tr>
-							<tr class="fragment">
-								<td>Append <code>.bind</code> to any html or custom attribute.</td>
-								<td>Uses Angular-specific custom attributes.</td>
+							<tr>
+								<td class="fragment" data-fragment-index="1">Append <code>.bind</code> to any html or custom attribute.</td>
+								<td class="fragment" data-fragment-index="5">Uses Angular-specific custom attributes.</td>
 							</tr>
-							<tr class="fragment">
-								<td>Defaults to two-way for input, one-way for everything else.</td>
-								<td>Two-way all the time, except for custom directives.</td>
+							<tr>
+								<td class="fragment" data-fragment-index="2">Defaults to two-way for input, one-way for everything else.</td>
+								<td class="fragment" data-fragment-index="6">Two-way all the time, except for custom directives.</td>
 							</tr>
-							<tr class="fragment">
-								<td>Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code>.</td>
-								<td>Each binding adds a watcher on the <code>$scope</code> model.</td>
+							<tr>
+								<td class="fragment" data-fragment-index="3">Want more control? <code>.one-way</code>, <code>.two-way</code>, <code>.one-time</code>.</td>
+								<td class="fragment" data-fragment-index="7">Each binding adds a watcher on the <code>$scope</code> model.</td>
 							</tr>
-							<tr class="fragment">
-								<td><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> picks optimal observation strategy &amp; minimizes dirty checking.</td>
-								<td>Built in directives trigger digest cycle on scope model changes (dirty checking).</td>
+							<tr>
+								<td class="fragment" data-fragment-index="4"><a href="https://github.com/aurelia/documentation/blob/master/English/docs.md#adaptive-binding">Adaptive Binding</a> picks optimal observation strategy &amp; minimizes dirty checking.</td>
+								<td class="fragment" data-fragment-index="8">Built in directives trigger digest cycle on scope model changes (dirty checking).</td>
 							</tr>
 						</table>
 					</section>
