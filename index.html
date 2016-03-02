@@ -611,7 +611,8 @@ script.next().value.then((r) => {
 							<ul>
 								<li class="fragment">
 									<div>Modern javascript</div>
-									<small>Write in ES6, ES7, Typescript... or ES5</small>
+									<div><small>Write in ES6, ES7, Typescript or <em class="fragment">*</em>ES5</small></div>
+									<small class="fragment"><em>* Presenter does not officially endorse use of ES5</em></small>
 								</li>
 								<li class="fragment">
 									<div>Modern DOM</div>
@@ -619,11 +620,11 @@ script.next().value.then((r) => {
 								</li>
 								<li class="fragment">
 									<div>Modern Tooling</div>
-									<small><em class="fragment">*</em>JSPM, Gulp, Karma, Protractor</small>
+									<div><small><em class="fragment">**</em>JSPM, Gulp, Karma, Protractor</small></div>
+									<small class="fragment"><em>** Presenter does not officially endorse JSPM</em></small>
 								</li>
 							</ul>
 						</p>
-						<p class="fragment"><em>* Presenter does not officially endorse JSPM</em></p>
 					</section>
 
 					<section>
@@ -1511,7 +1512,15 @@ HTML:
 							<li class="fragment">Still in beta &rarr; moving target</li>
 							<li class="fragment">Documentation is a work in progress</li>
 							<li class="fragment">Not a lot of Q &amp; A on Stack Overflow</li>
-							<li class="fragment">JSPM is new and quirky (recommended package manager and module loader)</li>
+							<li class="fragment">
+								<div>JSPM is new and quirky (recommended package manager and module loader)</div>
+								<small>
+									<ul>
+										<li>JSPM link and associated transitive dependencies are flakey</li>
+										<li>Implicitly pulls in all transitive dependencies</li>
+									</ul>
+								</small>
+							</li>
 							<li class="fragment">Bundling and optimization still needs work</li>
 						</ul>
 					</section>
