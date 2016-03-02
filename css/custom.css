@@ -14,7 +14,7 @@
   height: 1.5em;
   margin: 5px !important;
   padding: 5px !important;
-  border: 3px solid red !important;
+  border: 3px solid #e88383 !important;
   border-radius: 3px !important;
   background: #5A5859 !important;
   font-family: monospace !important;
@@ -42,7 +42,7 @@
 /* ---------------------------------- */
 
 .subsection-start h2 {
-  color: red;
+  color: #e88383;
   font-size: 2.2em;
 }
 
