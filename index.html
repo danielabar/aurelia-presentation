@@ -1230,33 +1230,61 @@ export class ChildViewModel {
 
 				<!-- BEGIN Kent: Aurelia vs React -->
 				<section>
-					<section>
+					<section data-transition="fade" data-state="subsection-start" data-background="images/stick-fight.gif" data-background-size="80%">
 						<h2>Aurelia vs React</h2>
                     </section>
                     <section>
-                        <div class="react-showdown">
-                            <div class="sean">It's not JavaScript!</div>
-                            <div class="mike">It's just JavaScript!</div>
-                        </div>
-					</section>
+                        <h2>React is not a framework</h2>
+                        <p class="fragment">It's just a view layer</p>
+                        <p class="fragment">You have to provide everything else</p>
+                        <p class="fragment">That means lots of freedom but also lots of inconsistency</p>
+                    </section>
+                    <section>
+                        <h2>Aurelia gives you freedom, too</h2>
+                        <p class="fragment">It provides lots of modules but lets you pick the ones you want to use</p>
+                    </section>
 					<section>
 						<h2>JSX</h2>
-                        <pre class="fragment presentation-code"><code class="jsx" data-trim>
-var WelcomeBox = React.createClass({
-  render: function() {
-    return (
-      <div className="well">
-        Hello, {this.props.username}!
-      </div>
+                        <pre class="presentation-code hljs jsx">
+<span class="hljs-keyword">class</span> <span class="hljs-title">WelcomeBox</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> {
+  render() {
+    <span class="hljs-keyword">let</span> <span class="hljs-comment">divStyle</span> = { color: <span class="hljs-keyword">this</span>.props.color };
+    <span class="hljs-keyword">return</span> (
+      &lt;<span class="hljs-string">div</span> <span class="hljs-literal">className</span>="well"&gt;
+        &lt;<span class="hljs-string">div</span> <span class="hljs-literal">style</span>={<span class="hljs-comment">divStyle</span>}&gt;Hello, {<span class="hljs-keyword">this</span>.props.name}!&lt;/<span class="hljs-string">div</span>&gt;
+      &lt;/<span class="hljs-string">div</span>&gt;
     );
   }
-});
-ReactDOM.render(
-  <WelcomeBox username="Hodor" />,
-  document.getElementById('welcome')
-);
-                        </code></pre>
+}
+
+<span class="hljs-type">ReactDOM</span>.render(
+  &lt;<span class="hljs-string">WelcomeBox</span> <span class="hljs-literal">name</span>="Hodor" <span class="hljs-literal">color</span>="firebrick"/&gt;,
+  <span class="hljs-keyword">document</span>.getElementById(<span class="hljs-symbol">'welcome'</span>)
+);</pre>
 					</section>
+                    <section>
+                        <h2>Reactions to JSX Vary</h2>
+                        <div class="react-showdown">
+                            <img src="images/i-love-it.gif" class="fragment">
+                            <img src="images/i-dont-want-to-live-on-this-planet-anymore.png" class="fragment">
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Opinions aside,<br>one fact remains</h2>
+                        <div class="fragment">It's not JavaScript!</div>
+                        <p class="fragment">In other words, you're locked in</p>
+                    </section>
+                    <section>
+                        <h2>That's not a concern with Aurelia</h2>
+                        <div class="fragment">It's just JavaScript!</div>
+					</section>
+                    <section>
+                        <h2>State Management in React</h2>
+                        <ul>
+                            <li class="fragment">Flux</li>
+                            <li class="fragment">Redux</li>
+                        </ul>
+                    </section>
                     <section>
                         <h2>Flux: Unidirectional Data Flow</h2>
                         <img src="images/flux.png" alt="Flux">
@@ -1272,11 +1300,21 @@ ReactDOM.render(
                     <section>
                         <h2>Data Flow in Aurelia: Some Thoughts</h2>
                         <ul>
-                            <li>One-way binding apart from input elements</li>
                             <li>State is updated by calling methods on services</li>
-                            <li>Changes flow down via observers</li>
+                            <li>Changes flow down via route params, bindings and observers</li>
                         </ul>
                     </section>
+                    <section>
+                        <h2>Aurelia plays well with others</h2>
+                        <div class="fragment">
+                            <p>You can use it with React, Flux or Redux</p>
+                            <img src="images/friends-banana.jpg">
+                        </div>
+                    </section>
+                    <!--
+                        - aurelia flow chart
+                        - component vs component
+                    -->
 				</section>
 				<!-- END Kent: Aurelia vs React -->
 

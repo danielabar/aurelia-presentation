@@ -236,9 +236,8 @@
 }
 
 .react-showdown {
-  height: 50%;
   margin: 0 auto !important;
-  width: 80%;
+  width: 90%;
 }
 
 .react-showdown:after {
@@ -247,16 +246,21 @@
   clear: both;
 }
 
-.react-showdown .sean {
+.react-showdown > * {
   display: block;
-  float: left;
-  height: 100%;
+  width: 50%;
 }
 
-.react-showdown .mike {
-  display: block;
+.react-showdown > *:first-child {
+  float: left;
+}
+
+.react-showdown > *:last-child {
   float: right;
-  height: 100%;
+}
+
+.reveal pre.jsx {
+  padding: 5px;
 }
 
 .compete img {
