@@ -1116,6 +1116,7 @@ link: function(scope, element) {
 			scope.data = e.date;
 		}
 	);
+	
 }
 						</code></pre>
 						<div class="hack-col-right">
@@ -1133,10 +1134,12 @@ link: function(scope, element) {
 				scope.data = e.date;
 			});
 	});
+
 }
 						</code></pre>
 						<div class="hack-col-right" style="top: 180%;">
 							<p class="fragment">Run update inside <code>scope.$apply</code> to trigger a digest cycle.</p>
+							<p class="fragment">Need to understand framework internals to make this work.</p>
 						</div>
 					</section>
 
