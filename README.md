@@ -36,3 +36,9 @@ Verify at [http://danielabar.github.io/aurelia-presentation](http://danielabar.g
 Slides are built using the reveal.js framework. For examples of all the features possible, see [http://localhost:8000/example.html](http://localhost:8000/example.html), and [source](example.html).
 
 Also see the reveal.js [docs](https://github.com/hakimel/reveal.js/)
+
+## Presenting
+
+1. Install Node.js
+1. Run `npm install`
+1. Run `node plugin/notes-server`
