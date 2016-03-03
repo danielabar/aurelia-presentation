@@ -1090,6 +1090,19 @@ angular.module('myApp').directive('myDatepicker',
 						</div>
 					</section>
 
+					<section>
+						<h2>Directive: Template</h2>
+						<pre class="presentation-code"><code class="hljs" data-trim>
+<!-- views/mydatepicker.html -->
+<div class="input-group date">
+  <input type="text" class="form-control">
+  <div class="input-group-addon">
+      <span class="glyphicon glyphicon-th"></span>
+  </div>
+</div>
+						</code></pre>
+					</section>
+
 					<section data-state="ang-dir">
 						<h2>Directive: Datepicker</h2>
 						<pre class="presentation-code hack-col-left"><code class="hljs" data-trim>
@@ -1169,6 +1182,21 @@ export class MyDatepickerCustomElement {
 						<p class="fragment">View template loaded by convention</p>
 						<p class="fragment"><code>bind</code> and <code>unbind</code> are <a href="http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.1.1/doc/article/creating-components/3">Component Lifecycle</a> methods.</p>
 					</div>
+				</section>
+
+				<section>
+					<h2>Custom Element: Template</h2>
+					<pre class="presentation-code"><code class="hljs" data-trim>
+<!-- my-datepicker.html -->
+<template>
+	<div class="input-group date">
+	<input type="text" class="form-control">
+	<div class="input-group-addon">
+			<span class="glyphicon glyphicon-th"></span>
+	</div>
+	</div>
+</template>
+					</code></pre>
 				</section>
 
 				<section data-state="ang-dir">
